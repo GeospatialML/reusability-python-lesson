@@ -62,9 +62,7 @@ Model deployment moves a validated model into operational use. This stage requir
 
 ## Model reusability and reproducibility
 
-1.2	Importance (aka, the why) of geospatial model reusability and reproducibility
-•	Provide examples. For instance, update/reuse models when new data / missions become available. 
-•	Geospatial Foundation models are meant to be reused for various downstream tasks – using data from various EO missions
+1.2	Importance of geospatial model reusability and reproducibility
 
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
 As new data become available, it is crucial that previously trained models can be reused
