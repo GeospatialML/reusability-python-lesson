@@ -245,7 +245,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="01-model-reuse-repro.html">1. Modelling and model reusability and reproduciblity in the context of a case study</a>
+        <a href="01-model-reuse-repro.html">1. Modelling and model reusability and reproduciblity</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -376,7 +376,7 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>All in One View</h1>
         
-<section id="aio-01-model-reuse-repro"><p>Content from <a href="01-model-reuse-repro.html">Modelling and model reusability and reproduciblity in the context of a case study</a></p>
+<section id="aio-01-model-reuse-repro"><p>Content from <a href="01-model-reuse-repro.html">Modelling and model reusability and reproduciblity</a></p>
 <hr>
 <p>Last updated on 2026-10-27 |
 
@@ -506,11 +506,39 @@ crucial. Moreover, fine-tuning deep learning models, where you re-used a
 previously train model, is a common practice. Reusing models let
 scientist can understands what work and what does not, and enables fair
 comparison. As new data become available, it is crucial that previously
-trained models can be reused</p>
+trained models can be reused, either for inference or thorugh
+fine-tuning</p>
 <p>Reproducibility is the ability to reproduce a ML experiment and
 obtain the same exact result [2]. It is essential for scientific rigour
 and for fair comparison between models, for example, when benchmarking
 different approaches to a specific problem.</p>
+<p>A minimum level of reproducibility is reached when you, as the
+author, can reproduce yourself your own experimental results which
+already requires deliberate effort. A higher level is reached when peers
+can reproduce your results which can increase trust, interest, and
+citations [3].</p>
+<p>Several recommendations exist for addressing reproducibility in
+geospatial research [4]. Below, we present ten well-known rules for
+reproducible computational research [3], which are applicable to
+geospatial studies. These rules aim to facilitate the reproducibility of
+research outputs, including data, models and derived artifacts such as
+performance metrics and figures.</p>
+<ol style="list-style-type: decimal">
+<li>For every result, keep track of how it was produced</li>
+<li>Avoid manual data manipulation steps</li>
+<li>Archive the exact versions of all external programs used<br>
+</li>
+<li>Version control all custom scripts</li>
+<li>Record all intermediate results, when possible in standardized
+formats</li>
+<li>For analysis that include randomness, note underlying random
+seeds</li>
+<li>Always store raw data behind plots</li>
+<li>Generate hierarchical analysis output, allowing layers of increasing
+detail to be inspected</li>
+<li>Connect textual statements to underlying results</li>
+<li>Provide public access to scripts, runs and results</li>
+</ol>
 <div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a>
 </h3>
@@ -523,6 +551,10 @@ different approaches to a specific problem.</p>
 modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling"></a>
 </h2>
 <hr class="half-width">
+<div class="section level4">
+<h4 id="reproducibility-across-os">Reproducibility across OS<a class="anchor" aria-label="anchor" href="#reproducibility-across-os"></a>
+</h4>
+<p>Different architectures and operative systems</p>
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -631,6 +663,7 @@ challenge blocks?</h3>
 </div>
 </div>
 </div>
+</div>
 </section><section><h2 class="section-heading" id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
 </h2>
 <hr class="half-width">
@@ -693,6 +726,13 @@ Access, vol. 11, pp. 31866-31879, 2023, doi:
 10.1109/ACCESS.2023.3262138. keywords: {Interviews;Machine
 learning;Training;Collaboration;Bibliographies;Automation;Codes;CI/CD;DevOps;machine
 learning;MLOps;operations;workflow orchestration},</p>
+<p>[3]Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules
+for Reproducible Computational Research. PLOS Computational Biology
+9(10): e1003285. <a href="https://doi.org/10.1371/journal.pcbi.1003285" class="external-link uri">https://doi.org/10.1371/journal.pcbi.1003285</a></p>
+<p>[4] Konkol, M., Kray, C., &amp; Pfeiffer, M. (2019). Computational
+reproducibility in geoscientific papers: Insights from a series of
+studies with geoscientists and a reproduction study. International
+Journal of Geographical Information Science, 33(2), 408–429. <a href="https://doi.org/10.1080/13658816.2018.1508687" class="external-link uri">https://doi.org/10.1080/13658816.2018.1508687</a></p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -878,7 +918,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -913,7 +953,7 @@ you add before starting your run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -942,7 +982,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
