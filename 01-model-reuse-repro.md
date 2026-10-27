@@ -1,5 +1,5 @@
 ---
-title: "Modelling and model reusability and reproduciblity in the context of a case study"
+title: "Modelling and model reusability and reproduciblity"
 teaching: 0 # teaching time in minutes
 exercises: 0 # exercise time in minutes
 ---
@@ -65,10 +65,24 @@ Model deployment moves a validated model into operational use. This stage requir
 1.2	Importance of geospatial model reusability and reproducibility
 
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
-As new data become available, it is crucial that previously trained models can be reused
+As new data become available, it is crucial that previously trained models can be reused, either for inference or thorugh fine-tuning 
 
 Reproducibility is the ability to reproduce a ML experiment and obtain the same exact result [2]. It is essential for scientific rigour and for fair comparison between models, for example, when benchmarking different approaches to a specific problem. 
 
+A minimum level of reproducibility is reached when you, as the author, can reproduce yourself your own experimental results which already requires deliberate effort. A higher level is reached when peers can reproduce your results which can increase trust, interest, and citations [3].
+
+Several recommendations exist for addressing reproducibility in geospatial research [4]. Below, we present ten well-known rules for reproducible computational research [3], which are applicable to geospatial studies. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
+
+1. For every result, keep track of how it was produced 
+2. Avoid manual data manipulation steps
+3. Archive the exact versions of all external programs used  
+4. Version control all custom scripts
+5. Record all intermediate results, when possible in standardized formats
+6. For analysis that include randomness, note underlying random seeds
+7. Always store raw data behind plots
+8. Generate hierarchical analysis output, allowing layers of increasing detail to be inspected
+9. Connect textual statements to underlying results
+10. Provide public access to scripts, runs and results
 
 ### Pre-trained models
 
@@ -78,6 +92,9 @@ Reproducibility is the ability to reproduce a ML experiment and obtain the same 
 
 ## Challenges of reusability and reproducibility in geospatial modelling
 
+#### Reproducibility across OS
+
+Different architectures and operative systems  
 
 	
     Reproducibility across OS / Interoperability (awareness level)
@@ -181,5 +198,9 @@ Cool, right?
 [1] Koldasbayeva, D., Tregubova, P., Gasanov, M. et al. Challenges in data-driven geospatial modeling for environmental research and practice. Nat Commun 15, 10700 (2024). https://doi.org/10.1038/s41467-024-55240-8
 
 [2] D. Kreuzberger, N. Kühl and S. Hirschl, "Machine Learning Operations (MLOps): Overview, Definition, and Architecture," in IEEE Access, vol. 11, pp. 31866-31879, 2023, doi: 10.1109/ACCESS.2023.3262138. keywords: {Interviews;Machine learning;Training;Collaboration;Bibliographies;Automation;Codes;CI/CD;DevOps;machine learning;MLOps;operations;workflow orchestration},
+
+[3]Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLOS Computational Biology 9(10): e1003285. https://doi.org/10.1371/journal.pcbi.1003285
+
+[4] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. https://doi.org/10.1080/13658816.2018.1508687
 
 [r-markdown]: https://rmarkdown.rstudio.com/

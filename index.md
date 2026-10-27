@@ -2,14 +2,19 @@
 site: sandpaper::sandpaper_site
 ---
 
-This lesson focuses on documenting the creative process behind each model, which serves as a good starting point for a set of guidelines to promote FAIR standards within the geospatial ML modeling community.
+This lesson focuses on documenting the creative process behind each model, which serves as a good starting point for a set of guidelines to promote FAIR standards within the geospatial Machine Learning(ML)/ Deep Learning (DL) modeling community.
+In this lesson, ML is used to refer to both ML and DL models. 
 
 ## Learning Objectives
 After following this lesson, learners will be able to:
  
-* Design a minimal MLOps workflow/pipeline using *MLflow* to track modelling experiments
-* Apply MLOps tools correctly on a *use case* to reproduce an experiment what for?: #)
-* Manage data versions with DVC (Data Version Control - [DVC](https://dvc.org/))
+1. Explain why (re)usability and reproducibility of ML models matter
+2. Create a pipeline to track ML modelling experiments
+3. Apply a pipeline on a case study to track ML modelling experiments
+4. Execute MLOps tools to manage data and model versions in ML/DL experiments
+5. Validate the reusability of a geospatial ML model
+6. Discuss the need for High-performance computing (HPC) and cloud computing to reuse/reproduce models
+
 
 ::: prereq
 
