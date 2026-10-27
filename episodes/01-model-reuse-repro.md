@@ -84,7 +84,7 @@ Reproducibility is the ability to reproduce a ML experiment and obtain the same 
 	Metadata and model documentation
 	Data standards in the geosciences
 	Geospatial data and model repositories 
-	Specific libraries xarray and geopandas – Community standards/preferences and compatibility with MLOps
+	Specific libraries xarray and geopandas - Community standards/preferences and compatibility with MLOps
 	Open models/weights for deep learning models 
 	Knowledge safety. Sensitive data. 
 
