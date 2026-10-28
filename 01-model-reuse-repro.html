@@ -452,9 +452,9 @@ learning models in particular are data-hungry so re-using them is
 crucial. Moreover, fine-tuning deep learning models, where you re-used a
 previously train model, is a common practice. Reusing models let
 scientist can understands what work and what does not, and enables fair
-comparison. As new data become available, it is crucial that previously
-trained models can be reused, either for inference or thorugh
-fine-tuning</p>
+comparison. As new data/EO mission become available, it is crucial that
+previously trained models can be reused, either for inference or through
+fine-tuning.</p>
 <p>Reproducibility is the ability to reproduce a ML experiment and
 obtain the same exact result [2]. It is essential for scientific rigour
 and for fair comparison between models, for example, when benchmarking
@@ -584,14 +584,25 @@ assign a digital object identifier (DOI).</li>
 </ol></div>
 <div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
-</div>
-<div class="section level3">
-<h3 id="foundational-models">Foundational models<a class="anchor" aria-label="anchor" href="#foundational-models"></a></h3>
+<p>Geospatial modelling workflows using DL often use pre-trained models,
+i.e., weights of a previously trained model, because they accelerate the
+training process and can yield better performance while helping to
+overcome potential data scarcity constraints. To reproduce a workflow
+using pre-trained models, it is necessary to provide a link to the
+models’ metadata and their corresponding weights. Metadata often
+describe model version, expected input data, tile size, features, and
+the number and order of channels, for example, how many Sentinel-2 bands
+are used, in which order, and at which resolution. For correctness, it
+is crucial to assess whether pre-trained models are suitable for the
+computational workflow, i.e., the downstream task, at hand. Geospatial
+foundation models are a particular case of pre-trained models, as they
+have been trained on massive amounts of data, often from different
+missions or modalities. They are meant to be adapted to various
+downstream tasks via direct inference or fine-tuning.</p>
 </div>
 </section><section><h2 class="section-heading" id="challenges-of-reusability-and-reproducibility-in-geospatial-modelling">Challenges of reusability and reproducibility in geospatial
 modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling"></a></h2>
-<hr class="half-width"><div class="section level4">
-<h4 id="reproducibility-across-os">Reproducibility across OS<a class="anchor" aria-label="anchor" href="#reproducibility-across-os"></a></h4>
+<hr class="half-width"><p>*Reproducibility across OS</p>
 <p>Different architectures and operative systems</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -684,7 +695,6 @@ challenge blocks?</h3>
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
-</div>
 </div>
 </div>
 </div>
