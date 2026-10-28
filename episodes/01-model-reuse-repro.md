@@ -87,7 +87,7 @@ Manage all custom scripts with a version control system such as Git. Include pre
 Large files such as satellite imagery, model weights and predicted rasters are better handled with tools such as Data Version Control - DVC, or archived separately in data repositories and referenced from the code.
 
 5. Record all intermediate results, when possible in standardized formats
-Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive.  Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
+Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive. Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
 
 6. For analysis that include randomness, note underlying random seeds
 Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every relevant step increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
@@ -116,13 +116,17 @@ def set_all_seeds(seed=42):
 {.language-python: Python source:}
 
 7. Always store raw data behind plots
-Store figures such as learning curves, confusion matrices, accuracy maps together with the underline data. Keeping the underline data allows to recreate figures without re-running the whole workflow. Figures can also be adjusted, re-analyzed by modifying a portion of the pipeline.
+Store figures such as learning curves, confusion matrices, accuracy maps together with the underline data. Keeping the underline data allows to recreate figures without re-running the whole workflow. When code and data are stored, figures can also be adjusted or re-analyzed by modifying only a portion of the pipeline.
 
 8. Generate hierarchical analysis output, allowing layers of increasing detail to be inspected
+Metrics such as *overall accuracy*, F1-score, or intersection over union (IoU) present summarized information. Keep, together with the metrics, the detailed data used to generate them, for example, predicted maps, reference data, and false positive and false negative maps.
 
 9. Connect textual statements to underlying results
 
+Consistent logging of experiments with their corresponding metadata, e.g., model hyperparameters, input features, version, and seeds, facilitates the backtracking of a manuscript's claims to the specific experiment, configuration and output that produced them. Literate-programming approaches such as Jupyter notebooks can further strengthen the link between the narrative, i.e., interpretation or conclusions, and the computational workflow. 
+
 10. Provide public access to scripts, runs and results
+The reproducibility of geospatial studies might be hindered by data licensing constraints and privacy concerns. In such cases, provide derived products and sufficiently anonymized results together with precisely documented steps (e.g., scripts) for data gathering and pre-processing. Ideally, in addition to using platforms such as Github, archive the code, configuration files, model weights, and outputs in publicly available repositories such as Zenodo or 4TU.ResearchData that assign a digital object identifier (DOI). 
 
 ### Pre-trained models
 
