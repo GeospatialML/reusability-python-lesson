@@ -527,12 +527,12 @@ computational cost or hardware requirements.</p></li>
 seeds Randomness influence ML/DL workflows in many steps, e.g., data
 spliting, cross-validation, weight initialisation, data augmentation,
 random sampling and training patches. Recording the random seeds used by
-all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) increases
-the reproducibility of a workflow. Minor differences may nevertheless
-occur because of non-deterministic GPU operations or differences in
-hardware and operating systems. To minimise such discrepancies, use
-deterministic operations wherever possible. When several runs are
-conducted, record and report every used seed.</p></li>
+all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every
+relevant step increases the reproducibility of a workflow. Minor
+differences may nevertheless occur because of non-deterministic GPU
+operations or differences in hardware and operating systems. To minimise
+such discrepancies, use deterministic operations wherever possible. When
+several runs are conducted, record and report every used seed.</p></li>
 </ol><p><strong>Example</strong>: The following example presents a function
 to set all seeds involved in a DL workflow for reproducibility [6].</p>
 <pre><code>
@@ -552,11 +552,15 @@ def set_all_seeds(seed=42):
     torch.cuda.manual_seed_all(seed)
     seed_everything(seed, workers=True)</code></pre>
 <p>{.language-python: Python source:}</p>
-<ol start="7" style="list-style-type: decimal"><li>Always store raw data behind plots</li>
-<li>Generate hierarchical analysis output, allowing layers of increasing
-detail to be inspected</li>
-<li>Connect textual statements to underlying results</li>
-<li>Provide public access to scripts, runs and results</li>
+<ol start="7" style="list-style-type: decimal"><li><p>Always store raw data behind plots Store figures such as learning
+curves, confusion matrices, accuracy maps together with the underline
+data. Keeping the underline data allows to recreate figures without
+re-running the whole workflow. Figures can also be adjusted, re-analyzed
+by modifying a portion of the pipeline.</p></li>
+<li><p>Generate hierarchical analysis output, allowing layers of
+increasing detail to be inspected</p></li>
+<li><p>Connect textual statements to underlying results</p></li>
+<li><p>Provide public access to scripts, runs and results</p></li>
 </ol><div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
 </div>
