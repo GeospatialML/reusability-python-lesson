@@ -27,8 +27,6 @@ We begin by introducing the main phases of data-driven geospatial modelling. The
 
 We close by discussing the main challenges of reusability and reproducibility in geospatial modelling.
 
-
-
 ## Geospatial modelling process - general workflow
 
 Data-driven approaches, meaning that models are built with parameters learned from observations’ data and aim to simulate new data minimally different from the “ground truth” under the same set of descriptive features. Among the standards guiding the implementation of data-driven model applications in general, CRISP-DM (Cross-Industry Standard Process for Data Mining) remains the most widely adopted reference framework. CRISP-DM structures a modelling project into a series of iterative phases including problem and data understanding, data collection and preparation, model selection, model training and hyperparameters optimization, model evalution, deployment and inference. Rather than following a stricly linear approach, CRISP-DM adopts a cyclical one allowing insights and lessons learned in later stages to inform (feedback) and refined decisions made in earlier phases. 
@@ -71,6 +69,7 @@ Reproducibility is the ability to reproduce a ML experiment and obtain the same 
 
 A minimum level of reproducibility is reached when you, as the author, can reproduce yourself your own experimental results which already requires deliberate effort. A higher level is reached when peers can reproduce your results which can increase trust, interest, and citations [3].
 
+### Simple rules for reproducible computational research
 Several recommendations exist for addressing reproducibility in geospatial research [4]. Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
 1. For every result, keep track of how it was produced
