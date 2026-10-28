@@ -592,13 +592,20 @@ using pre-trained models, it is necessary to provide a link to the
 models’ metadata and their corresponding weights. Metadata often
 describe model version, expected input data, tile size, features, and
 the number and order of channels, for example, how many Sentinel-2 bands
-are used, in which order, and at which resolution. For correctness, it
-is crucial to assess whether pre-trained models are suitable for the
-computational workflow, i.e., the downstream task, at hand. Geospatial
-foundation models are a particular case of pre-trained models, as they
-have been trained on massive amounts of data, often from different
-missions or modalities. They are meant to be adapted to various
-downstream tasks via direct inference or fine-tuning.</p>
+are used, in which order, and at which resolution.</p>
+<p>A well-known source of pretrained weights is the <a href="https://huggingface.co/" class="external-link">Hugging Face Hub</a>. <a href="https://docs.pytorch.org/vision/main/models.html" class="external-link">Pytorch
+(torchvision)</a> offers general-purpose pre-trained weights whereas (<a href="https://docs.torchgeo.org/en/stable/api/models.html" class="external-link">TorchGeo</a>)
+provides a wide range of weights pre-trained specifically on satellite
+imagery.</p>
+<p>For correctness, it is crucial to assess whether pre-trained models
+are suitable for the computational workflow, i.e., the downstream task,
+at hand.</p>
+<p><strong>Geospatial foundational models</strong> are a particular case
+of pre-trained models, as they have been trained on massive amounts of
+data, often from different missions or modalities. They are meant to be
+adapted to various downstream tasks via direct inference or
+fine-tuning.</p>
+<p>– here</p>
 </div>
 </section><section><h2 class="section-heading" id="challenges-of-reusability-and-reproducibility-in-geospatial-modelling">Challenges of reusability and reproducibility in geospatial
 modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling"></a></h2>
@@ -628,7 +635,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -662,7 +669,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -691,7 +698,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
