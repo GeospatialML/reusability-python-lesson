@@ -90,7 +90,7 @@ Large files such as satellite imagery, model weights and predicted rasters are b
 Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive.  Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
 
 6. For analysis that include randomness, note underlying random seeds
-Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
+Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every relevant step increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
 
 **Example**:
 The following example presents a function to set all seeds involved in a DL workflow for reproducibility [6].
@@ -116,8 +116,12 @@ def set_all_seeds(seed=42):
 {.language-python: Python source:}
 
 7. Always store raw data behind plots
+Store figures such as learning curves, confusion matrices, accuracy maps together with the underline data. Keeping the underline data allows to recreate figures without re-running the whole workflow. Figures can also be adjusted, re-analyzed by modifying a portion of the pipeline.
+
 8. Generate hierarchical analysis output, allowing layers of increasing detail to be inspected
+
 9. Connect textual statements to underlying results
+
 10. Provide public access to scripts, runs and results
 
 ### Pre-trained models
