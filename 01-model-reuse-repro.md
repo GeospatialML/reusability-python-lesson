@@ -90,6 +90,30 @@ Large files such as satellite imagery, model weights and predicted rasters are b
 Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive.  Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
 
 6. For analysis that include randomness, note underlying random seeds
+Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
+
+**Example**:
+The following example presents a function to set all seeds involved in a DL workflow for reproducibility [6].
+
+~~~
+
+from lightning.pytorch import seed_everything
+def set_all_seeds(seed=42):
+    """
+    Set all random seeds for reproducibility
+
+    Parameters:
+    ----------
+    seed : int
+        The seed value
+    """
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    random.seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    seed_everything(seed, workers=True)
+~~~
+{.language-python: Python source:}
 
 7. Always store raw data behind plots
 8. Generate hierarchical analysis output, allowing layers of increasing detail to be inspected
@@ -122,6 +146,7 @@ Different architectures and operative systems
 
 ::: discussion
 Why is reproducibility important?
+
 
 ::: hint
 this is my hint
@@ -215,5 +240,7 @@ Cool, right?
 
 [4] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. https://doi.org/10.1080/13658816.2018.1508687
 
-[5] [text](https://www.ibm.com/think/topics/yaml)
+[5] [YAML](https://www.ibm.com/think/topics/yaml)
+
+[6] [Public Urban Green Spaces (PUGS) Detection Workflow](https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py)
 [r-markdown]: https://rmarkdown.rstudio.com/
