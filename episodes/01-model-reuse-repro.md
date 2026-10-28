@@ -130,12 +130,14 @@ The reproducibility of geospatial studies might be hindered by data licensing co
 ### Pre-trained models
 
 Geospatial modelling workflows using DL often use pre-trained models, i.e., weights of a previously trained model, because they accelerate the training process and can yield better performance while helping to overcome potential data scarcity constraints. To reproduce a workflow using pre-trained models, it is necessary to provide a link to the models' metadata and their corresponding weights. Metadata often describe model version, expected input data, tile size, features, and the number and order of channels, for example, how many Sentinel-2 bands are used, in which order, and at which resolution. 
+
+A well-known source of pretrained weights is the [Hugging Face Hub](https://huggingface.co/). [Pytorch (torchvision)](https://docs.pytorch.org/vision/main/models.html) offers general-purpose pre-trained weights whereas ([TorchGeo](https://docs.torchgeo.org/en/stable/api/models.html)) provides a wide range of weights pre-trained specifically on satellite imagery. 
+
 For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the downstream task, at hand.
-Geospatial foundation models are a particular case of pre-trained models, as they have been trained on massive amounts of data, often from different missions or modalities. They are meant to be adapted to various downstream tasks via direct inference or fine-tuning.
 
+**Geospatial foundational models** are a particular case of pre-trained models, as they have been trained on massive amounts of data, often from different missions or modalities. They are meant to be adapted to various downstream tasks via direct inference or fine-tuning. 
 
-
-
+-- here
 
 ## Challenges of reusability and reproducibility in geospatial modelling
 
