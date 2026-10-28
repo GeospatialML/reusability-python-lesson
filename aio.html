@@ -606,12 +606,34 @@ def set_all_seeds(seed=42):
 <li><p>Always store raw data behind plots Store figures such as learning
 curves, confusion matrices, accuracy maps together with the underline
 data. Keeping the underline data allows to recreate figures without
-re-running the whole workflow. Figures can also be adjusted, re-analyzed
-by modifying a portion of the pipeline.</p></li>
+re-running the whole workflow. When code and data are stored, figures
+can also be adjusted or re-analyzed by modifying only a portion of the
+pipeline.</p></li>
 <li><p>Generate hierarchical analysis output, allowing layers of
-increasing detail to be inspected</p></li>
+increasing detail to be inspected Metrics such as <em>overall
+accuracy</em>, F1-score, or intersection over union (IoU) present
+summarized information. Keep, together with the metrics, the detailed
+data used to generate them, for example, predicted maps, reference data,
+and false positive and false negative maps.</p></li>
 <li><p>Connect textual statements to underlying results</p></li>
-<li><p>Provide public access to scripts, runs and results</p></li>
+</ol>
+<p>Consistent logging of experiments with their corresponding metadata,
+e.g., model hyperparameters, input features, version, and seeds,
+facilitates the backtracking of a manuscript’s claims to the specific
+experiment, configuration and output that produced them.
+Literate-programming approaches such as Jupyter notebooks can further
+strengthen the link between the narrative, i.e., interpretation or
+conclusions, and the computational workflow.</p>
+<ol start="10" style="list-style-type: decimal">
+<li>Provide public access to scripts, runs and results The
+reproducibility of geospatial studies might be hindered by data
+licensing constraints and privacy concerns. In such cases, provide
+derived products and sufficiently anonymized results together with
+precisely documented steps (e.g., scripts) for data gathering and
+pre-processing. Ideally, in addition to using platforms such as Github,
+archive the code, configuration files, model weights, and outputs in
+publicly available repositories such as Zenodo or 4TU.ResearchData that
+assign a digital object identifier (DOI).</li>
 </ol>
 <div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a>
@@ -653,7 +675,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -687,7 +709,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -716,7 +738,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -1001,7 +1023,7 @@ you add before starting your run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1030,7 +1052,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
