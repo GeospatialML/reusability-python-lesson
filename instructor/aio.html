@@ -378,7 +378,7 @@
         
 <section id="aio-01-model-reuse-repro"><p>Content from <a href="01-model-reuse-repro.html">Modelling and model reusability and reproduciblity</a></p>
 <hr>
-<p>Last updated on 2026-10-27 |
+<p>Last updated on 2026-10-28 |
 
         <a href="https://github.com/GeospatialML/reusability-pyhton-lesson/edit/main/episodes/01-model-reuse-repro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -524,20 +524,28 @@ geospatial studies. These rules aim to facilitate the reproducibility of
 research outputs, including data, models and derived artifacts such as
 performance metrics and figures.</p>
 <ol style="list-style-type: decimal">
-<li>For every result, keep track of how it was produced</li>
-<li>Avoid manual data manipulation steps</li>
-<li>Archive the exact versions of all external programs used<br>
-</li>
-<li>Version control all custom scripts</li>
-<li>Record all intermediate results, when possible in standardized
-formats</li>
-<li>For analysis that include randomness, note underlying random
-seeds</li>
-<li>Always store raw data behind plots</li>
-<li>Generate hierarchical analysis output, allowing layers of increasing
-detail to be inspected</li>
-<li>Connect textual statements to underlying results</li>
-<li>Provide public access to scripts, runs and results</li>
+<li><p>For every result, keep track of how it was produced In geospatial
+ML/DL, a single result, such as a segmentation map or an accuracy score
+comes out of a (long) chain of steps enclosed in phases as illustrated
+in modelling workflow above. Each step involves parameter choices that
+affect the outcome, for example, CRS, spatial resolution, tile size and
+overlap and data splitting strategy. Therefore, record the full
+provenance of every result. This means, in practice, keeping the
+computational workflow in executable scripts or pipelines and storing
+the configuration, e.g., a YAML file together with each
+experiment.</p></li>
+<li><p>Avoid manual data manipulation steps</p></li>
+<li><p>Archive the exact versions of all external programs used<br></p></li>
+<li><p>Version control all custom scripts</p></li>
+<li><p>Record all intermediate results, when possible in standardized
+formats</p></li>
+<li><p>For analysis that include randomness, note underlying random
+seeds</p></li>
+<li><p>Always store raw data behind plots</p></li>
+<li><p>Generate hierarchical analysis output, allowing layers of
+increasing detail to be inspected</p></li>
+<li><p>Connect textual statements to underlying results</p></li>
+<li><p>Provide public access to scripts, runs and results</p></li>
 </ol>
 <div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a>
@@ -579,7 +587,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -594,7 +602,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -626,7 +634,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -655,7 +663,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -822,7 +830,7 @@ preprocessed Metadata is available.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The link to the data is … The version of data is …. Data is Not
 preprocessed Metadata is available.</p>
@@ -1136,7 +1144,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -1171,7 +1179,7 @@ you add before starting your run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1200,7 +1208,7 @@ contribute to model reusability and ?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -1505,8 +1513,8 @@ any links that you are not going to use.
   "url": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/aio.html",
   "identifier": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/aio.html",
   "dateCreated": "2026-05-28",
-  "dateModified": "2026-10-27",
-  "datePublished": "2026-10-27"
+  "dateModified": "2026-10-28",
+  "datePublished": "2026-10-28"
 }
 
   </script><script>
