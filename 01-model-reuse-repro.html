@@ -466,10 +466,10 @@ can reproduce your results which can increase trust, interest, and
 citations [3].</p>
 <p>Several recommendations exist for addressing reproducibility in
 geospatial research [4]. Below, we present ten well-known rules for
-reproducible computational research [3], which are applicable to
-geospatial studies. These rules aim to facilitate the reproducibility of
-research outputs, including data, models and derived artifacts such as
-performance metrics and figures.</p>
+reproducible computational research [3], which have been contextualized
+to geospatial modelling workflows. These rules aim to facilitate the
+reproducibility of research outputs, including data, models and derived
+artifacts such as performance metrics and figures.</p>
 <ol style="list-style-type: decimal"><li><p>For every result, keep track of how it was produced In geospatial
 ML/DL, a single result, such as a segmentation map or an accuracy score
 comes out of a (long) chain of steps enclosed in phases as illustrated
@@ -478,10 +478,29 @@ affect the outcome, for example, CRS, spatial resolution, tile size and
 overlap and data splitting strategy. Therefore, record the full
 provenance of every result. This means, in practice, keeping the
 computational workflow in executable scripts or pipelines and storing
-the configuration, e.g., a YAML file together with each
-experiment.</p></li>
-<li><p>Avoid manual data manipulation steps</p></li>
-<li><p>Archive the exact versions of all external programs used<br></p></li>
+the configuration, e.g., a YAML file together with each experiment. A
+YAML (Yet Another Markup Language) file is a human-readable format for
+representing structured data in a manner that us both understandable by
+humans and interpretable by machines [5].</p></li>
+<li><p>Avoid manual data manipulation steps Geospatial workflows often
+involve interactive steps in desktop GIS software, such as label
+digitising, raster clipping to a study area or editing attribute tables.
+These steps are difficult to document and nearly impossible to reproduce
+exactly. As possible, they should be replaced by scripts. Some manual
+work maight not be avoided, for example, expert dataset annotation. In
+suc case, the resulting dataset should be versioned and archived. The
+annotation protocol should also be documented to make the process
+traceable.</p></li>
+<li><p>Archive the exact versions of all external programs used
+Geospatial modelling workflows heavily depends on specialized software,
+for example, geospatial libraries such as GDAL, PROJ, rasterio,
+(Geo)Pandas and ML/DL frameworks such as scikit-learn, PyTorch and
+TensorFlow. Version changes in any of these components may alter the
+results. At a minimum, the names and versions of all software packages
+should be recorded. Ideally the exact environment configuration should
+be archived, for example as a container image (e.g., Docker). This is
+particularly useful in HPC or cloud environments, where software is
+shared and changes over time.</p></li>
 <li><p>Version control all custom scripts</p></li>
 <li><p>Record all intermediate results, when possible in standardized
 formats</p></li>
@@ -527,7 +546,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -561,7 +580,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -590,7 +609,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -660,6 +679,7 @@ for Reproducible Computational Research. PLOS Computational Biology
 reproducibility in geoscientific papers: Insights from a series of
 studies with geoscientists and a reproduction study. International
 Journal of Geographical Information Science, 33(2), 408–429. <a href="https://doi.org/10.1080/13658816.2018.1508687" class="external-link uri">https://doi.org/10.1080/13658816.2018.1508687</a></p>
+<p>[5] <a href="https://www.ibm.com/think/topics/yaml" class="external-link">text</a> <a href="https://rmarkdown.rstudio.com/" class="external-link">r-markdown</a>: <a href="https://rmarkdown.rstudio.com/" class="external-link uri">https://rmarkdown.rstudio.com/</a></p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
