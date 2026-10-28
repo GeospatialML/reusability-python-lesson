@@ -19,7 +19,7 @@ exercises: 0 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Introduction
+## 1.1. Introduction
 
 In this lesson, you will learn why reusability and reproducibility matter in geospatial modelling.
 
@@ -27,7 +27,7 @@ We begin by introducing the main phases of data-driven geospatial modelling. The
 
 We close by discussing the main challenges of reusability and reproducibility in geospatial modelling.
 
-## Geospatial modelling process - general workflow
+## 1.2. Geospatial modelling process - general workflow
 
 Data-driven approaches, meaning that models are built with parameters learned from observations’ data and aim to simulate new data minimally different from the “ground truth” under the same set of descriptive features. Among the standards guiding the implementation of data-driven model applications in general, CRISP-DM (Cross-Industry Standard Process for Data Mining) remains the most widely adopted reference framework. CRISP-DM structures a modelling project into a series of iterative phases including problem and data understanding, data collection and preparation, model selection, model training and hyperparameters optimization, model evalution, deployment and inference. Rather than following a stricly linear approach, CRISP-DM adopts a cyclical one allowing insights and lessons learned in later stages to inform (feedback) and refined decisions made in earlier phases. 
 
@@ -58,9 +58,7 @@ Validation assesses whether the trained model generalizes beyond the data it was
 Model deployment moves a validated model into operational use. This stage requires monitoring for performance drift as new imagery or conditions diverge from the training distribution, along with clear versioning so that predictions can always be traced back to a specific model and dataset version.
 
 
-## Model reusability and reproducibility
-
-1.2	Importance of geospatial model reusability and reproducibility
+## 1.3. Importance of geospatialModel reusability and reproducibility
 
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
 As new data/EO mission become available, it is crucial that previously trained models can be reused, either for inference or through fine-tuning. 
@@ -112,7 +110,7 @@ def set_all_seeds(seed=42):
     torch.cuda.manual_seed_all(seed)
     seed_everything(seed, workers=True)
 ~~~
-{.language-python: Python source:}
+{: .language-python}
 
 7. Always store raw data behind plots
 Store figures such as learning curves, confusion matrices, accuracy maps together with the underline data. Keeping the underline data allows to recreate figures without re-running the whole workflow. When code and data are stored, figures can also be adjusted or re-analyzed by modifying only a portion of the pipeline.
@@ -127,7 +125,7 @@ Consistent logging of experiments with their corresponding metadata, e.g., model
 10. Provide public access to scripts, runs and results
 The reproducibility of geospatial studies might be hindered by data licensing constraints and privacy concerns. In such cases, provide derived products and sufficiently anonymized results together with precisely documented steps (e.g., scripts) for data gathering and pre-processing. Ideally, in addition to using platforms such as Github, archive the code, configuration files, model weights, and outputs in publicly available repositories such as Zenodo or 4TU.ResearchData that assign a digital object identifier (DOI). 
 
-### Pre-trained models
+### 1.4. Pre-trained models
 
 Geospatial modelling workflows using DL often use pre-trained models, i.e., weights of a previously trained model, because they accelerate the training process and can yield better performance while helping to overcome potential data scarcity constraints. To reproduce a workflow using pre-trained models, it is necessary to provide a link to the models' metadata and their corresponding weights. Metadata often describe model version, expected input data, tile size, features, and the number and order of channels, for example, how many Sentinel-2 bands are used, in which order, and at which resolution. 
 
@@ -139,7 +137,7 @@ For correctness, it is crucial to assess whether pre-trained models are suitable
 
 -- here
 
-## Challenges of reusability and reproducibility in geospatial modelling
+### 1.5. Challenges of reusability and reproducibility in geospatial modelling
 
 *Reproducibility across OS
 
