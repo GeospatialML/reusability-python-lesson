@@ -63,7 +63,7 @@ Model deployment moves a validated model into operational use. This stage requir
 1.2	Importance of geospatial model reusability and reproducibility
 
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
-As new data become available, it is crucial that previously trained models can be reused, either for inference or thorugh fine-tuning 
+As new data/EO mission become available, it is crucial that previously trained models can be reused, either for inference or through fine-tuning. 
 
 Reproducibility is the ability to reproduce a ML experiment and obtain the same exact result [2]. It is essential for scientific rigour and for fair comparison between models, for example, when benchmarking different approaches to a specific problem. 
 
@@ -79,7 +79,7 @@ In geospatial ML/DL, a single result, such as a segmentation map or an accuracy 
 Geospatial workflows often involve interactive steps in desktop GIS software, such as label digitising, raster clipping to a study area or editing attribute tables. These steps are difficult to document and nearly impossible to reproduce exactly. As possible, they should be replaced by scripts. Some manual work maight not be avoided, for example, expert dataset annotation. In suc case, the resulting dataset should be versioned and archived. The annotation protocol should also be documented to make the process traceable.
 
 3. Archive the exact versions of all external programs used
-Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.  
+Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.
 
 4. Version control all custom scripts
 Manage all custom scripts with a version control system such as Git. Include preprocessing routines, model architectures, custom loss functions, training and analysis notebooks. Each reported result should be backtracking to a specific state of the workflow. 
@@ -129,13 +129,17 @@ The reproducibility of geospatial studies might be hindered by data licensing co
 
 ### Pre-trained models
 
+Geospatial modelling workflows using DL often use pre-trained models, i.e., weights of a previously trained model, because they accelerate the training process and can yield better performance while helping to overcome potential data scarcity constraints. To reproduce a workflow using pre-trained models, it is necessary to provide a link to the models' metadata and their corresponding weights. Metadata often describe model version, expected input data, tile size, features, and the number and order of channels, for example, how many Sentinel-2 bands are used, in which order, and at which resolution. 
+For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the downstream task, at hand.
+Geospatial foundation models are a particular case of pre-trained models, as they have been trained on massive amounts of data, often from different missions or modalities. They are meant to be adapted to various downstream tasks via direct inference or fine-tuning.
 
 
-### Foundational models
+
+
 
 ## Challenges of reusability and reproducibility in geospatial modelling
 
-#### Reproducibility across OS
+*Reproducibility across OS
 
 Different architectures and operative systems  
 
