@@ -87,7 +87,10 @@ Manage all custom scripts with a version control system such as Git. Include pre
 Large files such as satellite imagery, model weights and predicted rasters are better handled with tools such as Data Version Control - DVC, or archived separately in data repositories and referenced from the code.
 
 5. Record all intermediate results, when possible in standardized formats
+Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive.  Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
+
 6. For analysis that include randomness, note underlying random seeds
+
 7. Always store raw data behind plots
 8. Generate hierarchical analysis output, allowing layers of increasing detail to be inspected
 9. Connect textual statements to underlying results
