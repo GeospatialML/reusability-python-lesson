@@ -218,11 +218,10 @@
 
     <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
       <div class="accordion-body">
-        <ul><li><a href="#introduction">Introduction</a></li>
-<li><a href="#geospatial-modelling-process---general-workflow">Geospatial modelling process - general workflow</a></li>
-<li><a href="#model-reusability-and-reproducibility">Model reusability and reproducibility</a></li>
-<li><a href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling">Challenges of reusability and reproducibility in geospatial
-modelling</a></li>
+        <ul><li><a href="#introduction">1.1. Introduction</a></li>
+<li><a href="#geospatial-modelling-process---general-workflow">1.2. Geospatial modelling process - general workflow</a></li>
+<li><a href="#importance-of-geospatialmodel-reusability-and-reproducibility">1.3. Importance of geospatialModel reusability and
+reproducibility</a></li>
 <li><a href="#figures">Figures</a></li>
 <li><a href="#math">Math</a></li>
 <li><a href="#references">References</a></li>
@@ -380,7 +379,7 @@ reproduciblity</li>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
+<section><h2 class="section-heading" id="introduction">1.1. Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a></h2>
 <hr class="half-width"><p>In this lesson, you will learn why reusability and reproducibility
 matter in geospatial modelling.</p>
 <p>We begin by introducing the main phases of data-driven geospatial
@@ -388,7 +387,7 @@ modelling. Then, we move on to model reusability and
 reproducibility.</p>
 <p>We close by discussing the main challenges of reusability and
 reproducibility in geospatial modelling.</p>
-</section><section><h2 class="section-heading" id="geospatial-modelling-process---general-workflow">Geospatial modelling process - general workflow<a class="anchor" aria-label="anchor" href="#geospatial-modelling-process---general-workflow"></a></h2>
+</section><section><h2 class="section-heading" id="geospatial-modelling-process---general-workflow">1.2. Geospatial modelling process - general workflow<a class="anchor" aria-label="anchor" href="#geospatial-modelling-process---general-workflow"></a></h2>
 <hr class="half-width"><p>Data-driven approaches, meaning that models are built with parameters
 learned from observations’ data and aim to simulate new data minimally
 different from the “ground truth” under the same set of descriptive
@@ -446,10 +445,9 @@ stage requires monitoring for performance drift as new imagery or
 conditions diverge from the training distribution, along with clear
 versioning so that predictions can always be traced back to a specific
 model and dataset version.</p>
-</section><section><h2 class="section-heading" id="model-reusability-and-reproducibility">Model reusability and reproducibility<a class="anchor" aria-label="anchor" href="#model-reusability-and-reproducibility"></a></h2>
-<hr class="half-width"><p>1.2 Importance of geospatial model reusability and
-reproducibility</p>
-<p>Training machine learning models require a vast amount of data; deep
+</section><section><h2 class="section-heading" id="importance-of-geospatialmodel-reusability-and-reproducibility">1.3. Importance of geospatialModel reusability and
+reproducibility<a class="anchor" aria-label="anchor" href="#importance-of-geospatialmodel-reusability-and-reproducibility"></a></h2>
+<hr class="half-width"><p>Training machine learning models require a vast amount of data; deep
 learning models in particular are data-hungry so re-using them is
 crucial. Moreover, fine-tuning deep learning models, where you re-used a
 previously train model, is a common practice. Reusing models let
@@ -553,7 +551,7 @@ def set_all_seeds(seed=42):
     random.seed(seed)
     torch.cuda.manual_seed_all(seed)
     seed_everything(seed, workers=True)</code></pre>
-<p>{.language-python: Python source:}</p>
+<p>{: .language-python}</p>
 <ol start="7" style="list-style-type: decimal"><li><p>Always store raw data behind plots Store figures such as learning
 curves, confusion matrices, accuracy maps together with the underline
 data. Keeping the underline data allows to recreate figures without
@@ -585,7 +583,7 @@ publicly available repositories such as Zenodo or 4TU.ResearchData that
 assign a digital object identifier (DOI).</li>
 </ol></div>
 <div class="section level3">
-<h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
+<h3 id="pre-trained-models">1.4. Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
 <p>Geospatial modelling workflows using DL often use pre-trained models,
 i.e., weights of a previously trained model, because they accelerate the
 training process and can yield better performance while helping to
@@ -609,9 +607,10 @@ adapted to various downstream tasks via direct inference or
 fine-tuning.</p>
 <p>– here</p>
 </div>
-</section><section><h2 class="section-heading" id="challenges-of-reusability-and-reproducibility-in-geospatial-modelling">Challenges of reusability and reproducibility in geospatial
-modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling"></a></h2>
-<hr class="half-width"><p>*Reproducibility across OS</p>
+<div class="section level3">
+<h3 id="challenges-of-reusability-and-reproducibility-in-geospatial-modelling">1.5. Challenges of reusability and reproducibility in geospatial
+modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-and-reproducibility-in-geospatial-modelling"></a></h3>
+<p>*Reproducibility across OS</p>
 <p>Different architectures and operative systems</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -717,6 +716,7 @@ challenge blocks?</h3>
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
+</div>
 </div>
 </div>
 </div>
