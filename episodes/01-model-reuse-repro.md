@@ -73,7 +73,9 @@ A minimum level of reproducibility is reached when you, as the author, can repro
 
 Several recommendations exist for addressing reproducibility in geospatial research [4]. Below, we present ten well-known rules for reproducible computational research [3], which are applicable to geospatial studies. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
-1. For every result, keep track of how it was produced 
+1. For every result, keep track of how it was produced
+In geospatial ML/DL, a single result, such as a segmentation map or an accuracy score comes out of a (long) chain of steps enclosed in phases as illustrated in modelling workflow above. Each step involves parameter choices that affect the outcome, for example, CRS, spatial resolution, tile size and overlap and data splitting strategy. Therefore, record the full provenance of every result. This means, in practice, keeping the computational workflow in executable scripts or pipelines and storing the configuration, e.g., a YAML file together with each experiment. 
+
 2. Avoid manual data manipulation steps
 3. Archive the exact versions of all external programs used  
 4. Version control all custom scripts
