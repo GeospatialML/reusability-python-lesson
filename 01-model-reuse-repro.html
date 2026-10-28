@@ -522,12 +522,39 @@ critical examination of the process when not all executables are
 available or when running them is impractical, e.g., due to
 computational cost or hardware requirements.</p></li>
 <li><p>For analysis that include randomness, note underlying random
-seeds</p></li>
-<li><p>Always store raw data behind plots</p></li>
-<li><p>Generate hierarchical analysis output, allowing layers of
-increasing detail to be inspected</p></li>
-<li><p>Connect textual statements to underlying results</p></li>
-<li><p>Provide public access to scripts, runs and results</p></li>
+seeds Randomness influence ML/DL workflows in many steps, e.g., data
+spliting, cross-validation, weight initialisation, data augmentation,
+random sampling and training patches. Recording the random seeds used by
+all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) increases
+the reproducibility of a workflow. Minor differences may nevertheless
+occur because of non-deterministic GPU operations or differences in
+hardware and operating systems. To minimise such discrepancies, use
+deterministic operations wherever possible. When several runs are
+conducted, record and report every used seed.</p></li>
+</ol><p><strong>Example</strong>: The following example presents a function
+to set all seeds involved in a DL workflow for reproducibility [6].</p>
+<pre><code>
+from lightning.pytorch import seed_everything
+def set_all_seeds(seed=42):
+    """
+    Set all random seeds for reproducibility
+
+    Parameters:
+    ----------
+    seed : int
+        The seed value
+    """
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    random.seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    seed_everything(seed, workers=True)</code></pre>
+<p>{.language-python: Python source:}</p>
+<ol start="7" style="list-style-type: decimal"><li>Always store raw data behind plots</li>
+<li>Generate hierarchical analysis output, allowing layers of increasing
+detail to be inspected</li>
+<li>Connect textual statements to underlying results</li>
+<li>Provide public access to scripts, runs and results</li>
 </ol><div class="section level3">
 <h3 id="pre-trained-models">Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
 </div>
@@ -539,16 +566,16 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <hr class="half-width"><div class="section level4">
 <h4 id="reproducibility-across-os">Reproducibility across OS<a class="anchor" aria-label="anchor" href="#reproducibility-across-os"></a></h4>
 <p>Different architectures and operative systems</p>
-<div class="codewrapper sourceCode" id="cb1">
+<div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">Reproducibility</span> across OS / Interoperability <span class="er">(</span><span class="ex">awareness</span> level<span class="kw">)</span></span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">Metadata</span> and model documentation</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">Data</span> standards in the geosciences</span>
-<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a><span class="ex">Geospatial</span> data and model repositories </span>
-<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a><span class="ex">Specific</span> libraries xarray and geopandas <span class="at">-</span> Community standards/preferences and compatibility with MLOps</span>
-<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a><span class="ex">Open</span> models/weights for deep learning models </span>
-<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a><span class="ex">Knowledge</span> safety. Sensitive data. </span></code></pre>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1" aria-label="code-block-2-1"></a><span class="ex">Reproducibility</span> across OS / Interoperability <span class="er">(</span><span class="ex">awareness</span> level<span class="kw">)</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1" aria-label="code-block-2-2"></a><span class="ex">Metadata</span> and model documentation</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1" aria-label="code-block-2-3"></a><span class="ex">Data</span> standards in the geosciences</span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1" aria-label="code-block-2-4"></a><span class="ex">Geospatial</span> data and model repositories </span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1" aria-label="code-block-2-5"></a><span class="ex">Specific</span> libraries xarray and geopandas <span class="at">-</span> Community standards/preferences and compatibility with MLOps</span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1" aria-label="code-block-2-6"></a><span class="ex">Open</span> models/weights for deep learning models </span>
+<span id="cb2-7"><a href="#cb2-7" tabindex="-1" aria-label="code-block-2-7"></a><span class="ex">Knowledge</span> safety. Sensitive data. </span></code></pre>
 </div>
 <div id="discussion1" class="callout discussion">
 <div class="callout-square">
@@ -563,7 +590,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -583,7 +610,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <h3 class="callout-title">Challenge 1: Can you do it?</h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -597,7 +624,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -626,7 +653,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -696,7 +723,9 @@ for Reproducible Computational Research. PLOS Computational Biology
 reproducibility in geoscientific papers: Insights from a series of
 studies with geoscientists and a reproduction study. International
 Journal of Geographical Information Science, 33(2), 408–429. <a href="https://doi.org/10.1080/13658816.2018.1508687" class="external-link uri">https://doi.org/10.1080/13658816.2018.1508687</a></p>
-<p>[5] <a href="https://www.ibm.com/think/topics/yaml" class="external-link">text</a> <a href="https://rmarkdown.rstudio.com/" class="external-link">r-markdown</a>: <a href="https://rmarkdown.rstudio.com/" class="external-link uri">https://rmarkdown.rstudio.com/</a></p>
+<p>[5] <a href="https://www.ibm.com/think/topics/yaml" class="external-link">YAML</a></p>
+<p>[6] <a href="https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py" class="external-link">Public
+Urban Green Spaces (PUGS) Detection Workflow</a> <a href="https://rmarkdown.rstudio.com/" class="external-link">r-markdown</a>: <a href="https://rmarkdown.rstudio.com/" class="external-link uri">https://rmarkdown.rstudio.com/</a></p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
