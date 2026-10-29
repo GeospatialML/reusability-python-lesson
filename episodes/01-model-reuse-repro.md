@@ -33,7 +33,6 @@ Data-driven approaches, meaning that models are built with parameters learned fr
 
 In this episode we focus on data-driven approaches which mean that models learn their parameters from observations. The figure below illustrate the CRISP-DM adapted to geospatial data as envisoned by [1]. 
 
-
 ![Modelling workflow. Adapted from [1]](modelling_workflow.png){alt='Modelling workflow'} 
 
 1. Spatial data collection
@@ -56,7 +55,6 @@ Validation assesses whether the trained model generalizes beyond the data it was
 5. Model deployment
 
 Model deployment moves a validated model into operational use. This stage requires monitoring for performance drift as new imagery or conditions diverge from the training distribution, along with clear versioning so that predictions can always be traced back to a specific model and dataset version.
-
 
 ## 1.3. Importance of geospatialModel reusability and reproducibility
 
@@ -124,6 +122,7 @@ Consistent logging of experiments with their corresponding metadata, e.g., model
 
 10. Provide public access to scripts, runs and results
 The reproducibility of geospatial studies might be hindered by data licensing constraints and privacy concerns. In such cases, provide derived products and sufficiently anonymized results together with precisely documented steps (e.g., scripts) for data gathering and pre-processing. Ideally, in addition to using platforms such as Github, archive the code, configuration files, model weights, and outputs in publicly available repositories such as Zenodo or 4TU.ResearchData that assign a digital object identifier (DOI). 
+Ideally the code can be inspected for reproducibility. For example, open science initiatives like CODECHECK offer a space to get an artcle's code verified for reproducibility[7]
 
 ### 1.4. Pre-trained models
 
@@ -131,11 +130,12 @@ Geospatial modelling workflows using DL often use pre-trained models, i.e., weig
 
 A well-known source of pretrained weights is the [Hugging Face Hub](https://huggingface.co/). [Pytorch (torchvision)](https://docs.pytorch.org/vision/main/models.html) offers general-purpose pre-trained weights whereas ([TorchGeo](https://docs.torchgeo.org/en/stable/api/models.html)) provides a wide range of weights pre-trained specifically on satellite imagery. 
 
-For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the downstream task, at hand.
+For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the application-specific task at hand.
 
-**Geospatial foundational models** are a particular case of pre-trained models, as they have been trained on massive amounts of data, often from different missions or modalities. They are meant to be adapted to various downstream tasks via direct inference or fine-tuning. 
+Foundational models are large-scale and highly versatile AI models that are pre-trained on massive datasets and can be readily adapted to diverse end tasks across domains.
+**Geospatial foundational models** are a specialized class of are foundation models pretrained on heterogeneous spatiotemporal data, often from different missions or modalities, to support diverse downstream geospatial tasks. They can be used for various downstream tasks either directly, through zero-shot inference, or after task-specific fine-tuning. 
 
--- here
+-- here XXXX
 
 ### 1.5. Challenges of reusability and reproducibility in geospatial modelling
 
@@ -255,3 +255,5 @@ Cool, right?
 
 [6] [Public Urban Green Spaces (PUGS) Detection Workflow](https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py)
 [r-markdown]: https://rmarkdown.rstudio.com/
+
+[7] Eglen S, Nüst D. CODECHECK: an open-science initiative to facilitate sharing of computer programs and results presented in scientific publications. Septentrio Conf Series. 2019;1. [(https://doi.org/10.7557/5.4910](https://doi.org/10.7557/5.4910).
