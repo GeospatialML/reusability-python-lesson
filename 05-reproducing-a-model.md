@@ -85,6 +85,12 @@ You can add a line with at least three colons and a `solution` tag.
 :::::::::::::::::::::::::::::::::
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
+### Assessing your own model reproducibility
+
+We have crafted a list of criteria that you can use to self-assess the reproducibility of your geospatial workflow.
+Before you share your workflow, you might want to go through the
+[Reproducibility checklist](../learners/reproducibility-checklist.md).
+
 ## Figures
 
 You can use standard markdown for static figures with the following syntax:
