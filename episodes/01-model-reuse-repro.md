@@ -129,6 +129,7 @@ A well-known source of pretrained weights is the [Hugging Face Hub](https://hugg
 For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the application-specific task at hand.
 
 Foundational models are large-scale and highly versatile AI models that are pre-trained on massive datasets and can be readily adapted to diverse end tasks across domains.
+
 **Geospatial foundational models** are a specialized class of are foundation models pretrained on heterogeneous spatiotemporal data, often from different missions or modalities, to support diverse downstream geospatial tasks. They can be used for various downstream tasks either directly, through zero-shot inference, or after task-specific fine-tuning.
 
 ### 1.5. Challenges of reusability and reproducibility in geospatial modelling
