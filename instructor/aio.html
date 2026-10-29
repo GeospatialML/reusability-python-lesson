@@ -378,7 +378,7 @@
         
 <section id="aio-01-model-reuse-repro"><p>Content from <a href="01-model-reuse-repro.html">Modelling and model reusability and reproduciblity</a></p>
 <hr>
-<p>Last updated on 2026-10-28 |
+<p>Last updated on 2026-10-29 |
 
         <a href="https://github.com/GeospatialML/reusability-pyhton-lesson/edit/main/episodes/01-model-reuse-repro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <p>Estimated time: <i aria-hidden="true" data-feather="clock"></i> 0 minutes</p>
@@ -638,7 +638,10 @@ precisely documented steps (e.g., scripts) for data gathering and
 pre-processing. Ideally, in addition to using platforms such as Github,
 archive the code, configuration files, model weights, and outputs in
 publicly available repositories such as Zenodo or 4TU.ResearchData that
-assign a digital object identifier (DOI).</li>
+assign a digital object identifier (DOI). Ideally the code can be
+inspected for reproducibility. For example, open science initiatives
+like CODECHECK offer a space to get an artcle’s code verified for
+reproducibility[7]</li>
 </ol>
 </div>
 <div class="section level3">
@@ -658,14 +661,17 @@ are used, in which order, and at which resolution.</p>
 provides a wide range of weights pre-trained specifically on satellite
 imagery.</p>
 <p>For correctness, it is crucial to assess whether pre-trained models
-are suitable for the computational workflow, i.e., the downstream task,
-at hand.</p>
-<p><strong>Geospatial foundational models</strong> are a particular case
-of pre-trained models, as they have been trained on massive amounts of
-data, often from different missions or modalities. They are meant to be
-adapted to various downstream tasks via direct inference or
-fine-tuning.</p>
-<p>– here</p>
+are suitable for the computational workflow, i.e., the
+application-specific task at hand.</p>
+<p>Foundational models are large-scale and highly versatile AI models
+that are pre-trained on massive datasets and can be readily adapted to
+diverse end tasks across domains. <strong>Geospatial foundational
+models</strong> are a specialized class of are foundation models
+pretrained on heterogeneous spatiotemporal data, often from different
+missions or modalities, to support diverse downstream geospatial tasks.
+They can be used for various downstream tasks either directly, through
+zero-shot inference, or after task-specific fine-tuning.</p>
+<p>– here XXXX</p>
 </div>
 <div class="section level3">
 <h3 id="challenges-of-reusability-and-reproducibility-in-geospatial-modelling">1.5. Challenges of reusability and reproducibility in geospatial
@@ -697,7 +703,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -712,7 +718,7 @@ modelling<a class="anchor" aria-label="anchor" href="#challenges-of-reusability-
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -744,7 +750,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -773,7 +779,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -854,6 +860,9 @@ Journal of Geographical Information Science, 33(2), 408–429. <a href="https://
 <p>[5] <a href="https://www.ibm.com/think/topics/yaml" class="external-link">YAML</a></p>
 <p>[6] <a href="https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py" class="external-link">Public
 Urban Green Spaces (PUGS) Detection Workflow</a> <a href="https://rmarkdown.rstudio.com/" class="external-link">r-markdown</a>: <a href="https://rmarkdown.rstudio.com/" class="external-link uri">https://rmarkdown.rstudio.com/</a></p>
+<p>[7] Eglen S, Nüst D. CODECHECK: an open-science initiative to
+facilitate sharing of computer programs and results presented in
+scientific publications. Septentrio Conf Series. 2019;1. <a href="https://doi.org/10.7557/5.4910" class="external-link">(https://doi.org/10.7557/5.4910</a>.</p>
 <!--
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
@@ -943,7 +952,7 @@ preprocessed Metadata is available.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The link to the data is … The version of data is …. Data is Not
 preprocessed Metadata is available.</p>
@@ -1257,7 +1266,7 @@ reinforce the objectives.</li>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -1292,7 +1301,7 @@ you add before starting your run?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1321,7 +1330,7 @@ contribute to model reusability and ?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -1626,8 +1635,8 @@ any links that you are not going to use.
   "url": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/aio.html",
   "identifier": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/aio.html",
   "dateCreated": "2026-05-28",
-  "dateModified": "2026-10-28",
-  "datePublished": "2026-10-28"
+  "dateModified": "2026-10-29",
+  "datePublished": "2026-10-29"
 }
 
   </script><script>
