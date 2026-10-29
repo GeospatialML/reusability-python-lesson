@@ -19,15 +19,14 @@ exercises: 0 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-## 1.1. Introduction
+### 1.1. Introduction
 
 In this lesson, you will learn why reusability and reproducibility matter in geospatial modelling.
 
 We begin by introducing the main phases of data-driven geospatial modelling. Then, we move on to model reusability and reproducibility.
 
 We close by discussing the main challenges of reusability and reproducibility in geospatial modelling.
-
-## 1.2. Geospatial modelling process - general workflow
+### 1.2. Geospatial modelling process - general workflow
 
 Data-driven approaches, meaning that models are built with parameters learned from observations’ data and aim to simulate new data minimally different from the “ground truth” under the same set of descriptive features. Among the standards guiding the implementation of data-driven model applications in general, CRISP-DM (Cross-Industry Standard Process for Data Mining) remains the most widely adopted reference framework. CRISP-DM structures a modelling project into a series of iterative phases including problem and data understanding, data collection and preparation, model selection, model training and hyperparameters optimization, model evalution, deployment and inference. Rather than following a stricly linear approach, CRISP-DM adopts a cyclical one allowing insights and lessons learned in later stages to inform (feedback) and refined decisions made in earlier phases. 
 
@@ -36,7 +35,6 @@ In this episode we focus on data-driven approaches which mean that models learn 
 ![Modelling workflow. Adapted from [1]](modelling_workflow.png){alt='Modelling workflow'} 
 
 1. Spatial data collection
-
 
 Spatial data collection involves getting geospatial observations relevant to the study area, such as satellite imagery (e.g. Sentinel-2), aerial photography, LiDAR point clouds, or in-situ field measurements. This stage must account for spatial and temporal coverage, sensor resolution, and coordinate reference systems. Metadata documentation at this stage, including acquisition dates and preprocessing history, is essential for later reproducibility.
 
@@ -55,27 +53,25 @@ Validation assesses whether the trained model generalizes beyond the data it was
 5. Model deployment
 
 Model deployment moves a validated model into operational use. This stage requires monitoring for performance drift as new imagery or conditions diverge from the training distribution, along with clear versioning so that predictions can always be traced back to a specific model and dataset version.
-
-## 1.3. Importance of geospatialModel reusability and reproducibility
-
+### 1.3. Importance of geospatialModel reusability and reproducibility
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
 As new data/EO mission become available, it is crucial that previously trained models can be reused, either for inference or through fine-tuning. 
 
-Reproducibility is the ability to reproduce a ML experiment and obtain the same exact result [2]. It is essential for scientific rigour and for fair comparison between models, for example, when benchmarking different approaches to a specific problem. 
+Reproducibility is the ability to reproduce a ML experiment and obtain consistent result [2] with a prior study using the same materials, procedures, and conditions of analysis [3]. It is essential for scientific rigour and for fair comparison between models, for example, when benchmarking different approaches to a specific problem. 
 
-A minimum level of reproducibility is reached when you, as the author, can reproduce yourself your own experimental results which already requires deliberate effort. A higher level is reached when peers can reproduce your results which can increase trust, interest, and citations [3].
+A minimum level of reproducibility is reached when you, as the author, can reproduce yourself your own experimental results which already requires deliberate effort. A higher level is reached when peers can reproduce your results which can increase trust, interest, and citations [4].
 
-### Simple rules for reproducible computational research
-Several recommendations exist for addressing reproducibility in geospatial research [4]. Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
+#### Simple rules for reproducible computational research
+Several recommendations exist for addressing reproducibility in geospatial research [5] Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
 1. For every result, keep track of how it was produced
-In geospatial ML/DL, a single result, such as a segmentation map or an accuracy score comes out of a (long) chain of steps enclosed in phases as illustrated in modelling workflow above. Each step involves parameter choices that affect the outcome, for example, CRS, spatial resolution, tile size and overlap and data splitting strategy. Therefore, record the full provenance of every result. This means, in practice, keeping the computational workflow in executable scripts or pipelines and storing the configuration, e.g., a YAML file together with each experiment. A YAML (Yet Another Markup Language) file is a human-readable format for representing structured data in a manner that us both understandable by humans and interpretable by machines [5].
+In geospatial ML/DL, a single result, such as a segmentation map or an accuracy score comes out of a (long) chain of steps enclosed in phases as illustrated in modelling workflow above. Each step involves parameter choices that affect the outcome, for example, CRS, spatial resolution, tile size and overlap and data splitting strategy. Therefore, record the full provenance of every result. This means, in practice, keeping the computational workflow in executable scripts or pipelines and storing the configuration, e.g., a YAML file together with each experiment. A YAML (Yet Another Markup Language) file is a human-readable format for representing structured data in a manner that us both understandable by humans and interpretable by machines[6].
 
 2. Avoid manual data manipulation steps
 Geospatial workflows often involve interactive steps in desktop GIS software, such as label digitising, raster clipping to a study area or editing attribute tables. These steps are difficult to document and nearly impossible to reproduce exactly. As possible, they should be replaced by scripts. Some manual work maight not be avoided, for example, expert dataset annotation. In suc case, the resulting dataset should be versioned and archived. The annotation protocol should also be documented to make the process traceable.
 
 3. Archive the exact versions of all external programs used
-Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.
+Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas, Xarray, and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.
 
 4. Version control all custom scripts
 Manage all custom scripts with a version control system such as Git. Include preprocessing routines, model architectures, custom loss functions, training and analysis notebooks. Each reported result should be backtracking to a specific state of the workflow. 
@@ -88,7 +84,7 @@ Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-proces
 Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every relevant step increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
 
 **Example**:
-The following example presents a function to set all seeds involved in a DL workflow for reproducibility [6].
+The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
 
 ~~~
 
@@ -122,7 +118,7 @@ Consistent logging of experiments with their corresponding metadata, e.g., model
 
 10. Provide public access to scripts, runs and results
 The reproducibility of geospatial studies might be hindered by data licensing constraints and privacy concerns. In such cases, provide derived products and sufficiently anonymized results together with precisely documented steps (e.g., scripts) for data gathering and pre-processing. Ideally, in addition to using platforms such as Github, archive the code, configuration files, model weights, and outputs in publicly available repositories such as Zenodo or 4TU.ResearchData that assign a digital object identifier (DOI). 
-Ideally the code can be inspected for reproducibility. For example, open science initiatives like CODECHECK offer a space to get an artcle's code verified for reproducibility[7]
+Ideally the code can be inspected for reproducibility. For example, open science initiatives like CODECHECK offer a space to get an artcle's code verified for reproducibility[8]
 
 ### 1.4. Pre-trained models
 
@@ -133,27 +129,18 @@ A well-known source of pretrained weights is the [Hugging Face Hub](https://hugg
 For correctness, it is crucial to assess whether pre-trained models are suitable for the computational workflow, i.e., the application-specific task at hand.
 
 Foundational models are large-scale and highly versatile AI models that are pre-trained on massive datasets and can be readily adapted to diverse end tasks across domains.
-**Geospatial foundational models** are a specialized class of are foundation models pretrained on heterogeneous spatiotemporal data, often from different missions or modalities, to support diverse downstream geospatial tasks. They can be used for various downstream tasks either directly, through zero-shot inference, or after task-specific fine-tuning. 
-
--- here XXXX
+**Geospatial foundational models** are a specialized class of are foundation models pretrained on heterogeneous spatiotemporal data, often from different missions or modalities, to support diverse downstream geospatial tasks. They can be used for various downstream tasks either directly, through zero-shot inference, or after task-specific fine-tuning.
 
 ### 1.5. Challenges of reusability and reproducibility in geospatial modelling
 
-*Reproducibility across OS
+Deep learning results can vary across hardware, software versions, and precision settings because some GPU operations are nondeterministic, even with fixed random seeds [9, 10]. Moreover, comparing or combining results obtained on different platforms can be misleading, because differences caused by the computational environment may be attributed to the methods being evaluated. 
 
-Different architectures and operative systems  
+Data standards are crucial for reproducibility in geospatial workflows. The data formats and software used in a study determine whether data and workflows can be openly reused. Proprietary formats and software-specific workflows may require a paid license, while incomplete format specifications can cause loss or misinterpretation of information when data are converted. Open data formats, such as those of the Open Geospatial Consortium (OGC), and open-source software are, therefore, pillars of reproducibility and, consequently, of open science.
 
-	
-    Reproducibility across OS / Interoperability (awareness level)
-	Metadata and model documentation
-	Data standards in the geosciences
-	Geospatial data and model repositories 
-	Specific libraries xarray and geopandas - Community standards/preferences and compatibility with MLOps
-	Open models/weights for deep learning models 
-	Knowledge safety. Sensitive data. 
+In some cases, models rely on sensitive data that cannot be disclosed, for example, personal or location data subject to privacy regulations, e.g., GDPR, or data covered by licensing agreements [3]. In such cases, describing the data collection process and explaining why the data cannot be shared helps readers understand the limitations of the work. Similarly, intellectual property considerations may restrict reproducibility, for instance, when a patent is involved or when the results provide an institution with a competitive advantage. Even when data or code cannot be shared, reproducibility can be partially supported by reporting metadata, synthetic or aggregated datasets, e.g., through geomasking or spatial aggregation [11], or by providing controlled access on request (if possible).
 
-
-
+-- standards de facto and MLOPS that are not spatially explicit.
+here
 
 ::: discussion
 Why is reproducibility important?
@@ -247,13 +234,23 @@ Cool, right?
 
 [2] D. Kreuzberger, N. Kühl and S. Hirschl, "Machine Learning Operations (MLOps): Overview, Definition, and Architecture," in IEEE Access, vol. 11, pp. 31866-31879, 2023, doi: 10.1109/ACCESS.2023.3262138. keywords: {Interviews;Machine learning;Training;Collaboration;Bibliographies;Automation;Codes;CI/CD;DevOps;machine learning;MLOps;operations;workflow orchestration},
 
-[3]Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLOS Computational Biology 9(10): e1003285. https://doi.org/10.1371/journal.pcbi.1003285
+[3] Kedron P.,  Li W., Stewart Fotheringham & Michael Goodchild
+(2020): Reproducibility and replicability: opportunities and challenges for geospatial research,
+International Journal of Geographical Information Science, DOI: 10.1080/13658816.2020.1802032
 
-[4] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. https://doi.org/10.1080/13658816.2018.1508687
+[4] Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLOS Computational Biology 9(10): e1003285. https://doi.org/10.1371/journal.pcbi.1003285
 
-[5] [YAML](https://www.ibm.com/think/topics/yaml)
+[5] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. https://doi.org/10.1080/13658816.2018.1508687
 
-[6] [Public Urban Green Spaces (PUGS) Detection Workflow](https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py)
+[6] [YAML](https://www.ibm.com/think/topics/yaml)
+
+[7] [Public Urban Green Spaces (PUGS) Detection Workflow](https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py)
 [r-markdown]: https://rmarkdown.rstudio.com/
 
-[7] Eglen S, Nüst D. CODECHECK: an open-science initiative to facilitate sharing of computer programs and results presented in scientific publications. Septentrio Conf Series. 2019;1. [(https://doi.org/10.7557/5.4910](https://doi.org/10.7557/5.4910).
+[8] Eglen S, Nüst D. CODECHECK: an open-science initiative to facilitate sharing of computer programs and results presented in scientific publications. Septentrio Conf Series. 2019;1. [(https://doi.org/10.7557/5.4910](https://doi.org/10.7557/5.4910).
+
+[9][PyTorch reproducibility](https://docs.pytorch.org/docs/2.15/notes/randomness.html)
+
+[10] Gundersen, O. E., Coakley, K., Kirkpatrick, C., & Gil, Y. (2023). Sources of irreproducibility in machine learning: A review. arXiv:2204.07610
+
+[11] Kounadi, O., & Leitner, M. (2014). Why does geoprivacy matter? The scientific publication of confidential data presented on maps. Journal of Empirical Research on Human Research Ethics, 9(4), 34–45.
