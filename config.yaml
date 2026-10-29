@@ -75,7 +75,7 @@ episodes:
 
 # Information for Learners
 learners: 
-
+- checklist.md
 # Information for Instructors
 instructors: 
 
