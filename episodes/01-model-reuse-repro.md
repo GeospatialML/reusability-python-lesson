@@ -63,6 +63,29 @@ Reproducibility is the ability to reproduce a ML experiment and obtain consisten
 
 A minimum level of reproducibility is reached when you, as the author, can reproduce yourself your own experimental results which already requires deliberate effort. A higher level is reached when peers can reproduce your results which can increase trust, interest, and citations [4].
 
+Several recommendations exist for addressing reproducibility in geospatial research [5]. Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
+
+
+::::::::::::::::::::::::::::::::::::: Ten simple rules for reproducible computational research
+
+1. For every result, keep track of how it was produced
+In geospatial ML/DL, a single result, such as a segmentation map or an accuracy score comes out of a (long) chain of steps enclosed in phases as illustrated in modelling workflow above. Each step involves parameter choices that affect the outcome, for example, CRS, spatial resolution, tile size and overlap and data splitting strategy. Therefore, record the full provenance of every result. This means, in practice, keeping the computational workflow in executable scripts or pipelines and storing the configuration, e.g., a YAML file together with each experiment. A YAML (Yet Another Markup Language) file is a human-readable format for representing structured data in a manner that us both understandable by humans and interpretable by machines[6].
+
+2. Avoid manual data manipulation steps
+Geospatial workflows often involve interactive steps in desktop GIS software, such as label digitising, raster clipping to a study area or editing attribute tables. These steps are difficult to document and nearly impossible to reproduce exactly. As possible, they should be replaced by scripts. Some manual work maight not be avoided, for example, expert dataset annotation. In suc case, the resulting dataset should be versioned and archived. The annotation protocol should also be documented to make the process traceable.
+
+3. Archive the exact versions of all external programs used
+Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas, Xarray, and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.
+
+4. Version control all custom scripts
+Manage all custom scripts with a version control system such as Git. Include preprocessing routines, model architectures, custom loss functions, training and analysis notebooks. Each reported result should be backtracking to a specific state of the workflow. 
+Large files such as satellite imagery, model weights and predicted rasters are better handled with tools such as Data Version Control - DVC, or archived separately in data repositories and referenced from the code.
+
+5. Record all intermediate results, when possible in standardized formats
+Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive. Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
+
+::::::::::::::::::::::::::::::::::::::::::::::::
+
 #### Simple rules for reproducible computational research
 Several recommendations exist for addressing reproducibility in geospatial research [5] Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
