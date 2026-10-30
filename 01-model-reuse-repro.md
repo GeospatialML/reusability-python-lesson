@@ -65,27 +65,6 @@ A minimum level of reproducibility is reached when you, as the author, can repro
 
 Several recommendations exist for addressing reproducibility in geospatial research [5]. Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
-
-::::::::::::::::::::::::::::::::::::: Ten simple rules for reproducible computational research
-
-1. For every result, keep track of how it was produced
-In geospatial ML/DL, a single result, such as a segmentation map or an accuracy score comes out of a (long) chain of steps enclosed in phases as illustrated in modelling workflow above. Each step involves parameter choices that affect the outcome, for example, CRS, spatial resolution, tile size and overlap and data splitting strategy. Therefore, record the full provenance of every result. This means, in practice, keeping the computational workflow in executable scripts or pipelines and storing the configuration, e.g., a YAML file together with each experiment. A YAML (Yet Another Markup Language) file is a human-readable format for representing structured data in a manner that us both understandable by humans and interpretable by machines[6].
-
-2. Avoid manual data manipulation steps
-Geospatial workflows often involve interactive steps in desktop GIS software, such as label digitising, raster clipping to a study area or editing attribute tables. These steps are difficult to document and nearly impossible to reproduce exactly. As possible, they should be replaced by scripts. Some manual work maight not be avoided, for example, expert dataset annotation. In suc case, the resulting dataset should be versioned and archived. The annotation protocol should also be documented to make the process traceable.
-
-3. Archive the exact versions of all external programs used
-Geospatial modelling workflows heavily depends on specialized software, for example, geospatial libraries such as GDAL, PROJ, rasterio, (Geo)Pandas, Xarray, and ML/DL frameworks such as scikit-learn, PyTorch and TensorFlow. Version changes in any of these components may alter reported results. At a minimum, the names and versions of all software packages should be recorded. Ideally the exact environment configuration should be archived, for example as a container image (e.g., Docker). This is particularly useful in HPC or cloud environments, where software is shared and changes over time.
-
-4. Version control all custom scripts
-Manage all custom scripts with a version control system such as Git. Include preprocessing routines, model architectures, custom loss functions, training and analysis notebooks. Each reported result should be backtracking to a specific state of the workflow. 
-Large files such as satellite imagery, model weights and predicted rasters are better handled with tools such as Data Version Control - DVC, or archived separately in data repositories and referenced from the code.
-
-5. Record all intermediate results, when possible in standardized formats
-Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-processed image tiles, clipped rasters, rasterized masks, dataset splits and prediction maps. Store those intermediate results that allow individual stages to be checked without running the full pipeline, which is particularly important when model training is computationally expensive. Intermediate results may reveal bugs or faulty assumptions that are not apparent in the final results. They can also provide insight into the influence of parameter choices and allow critical examination of the process when not all executables are available or when running them is impractical, e.g., due to computational cost or hardware requirements.
-
-::::::::::::::::::::::::::::::::::::::::::::::::
-
 #### Simple rules for reproducible computational research
 Several recommendations exist for addressing reproducibility in geospatial research [5] Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
@@ -131,28 +110,8 @@ def set_all_seeds(seed=42):
     seed_everything(seed, workers=True)
 ~~~
 {: .language-python}
+
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-**Example**:
-The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
-~~~
-from lightning.pytorch import seed_everything
-def set_all_seeds(seed=42):
-    """
-    Set all random seeds for reproducibility
-
-    Parameters:
-    ----------
-    seed : int
-        The seed value
-    """
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    random.seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    seed_everything(seed, workers=True)
-~~~
-{: .language-python}
 
 7. Always store raw data behind plots
 Store figures such as learning curves, confusion matrices, accuracy maps together with the underline data. Keeping the underline data allows to recreate figures without re-running the whole workflow. When code and data are stored, figures can also be adjusted or re-analyzed by modifying only a portion of the pipeline.
@@ -184,20 +143,20 @@ Foundational models are large-scale and highly versatile AI models that are pre-
 Deep learning results can vary across hardware, software versions, and precision settings because some GPU operations are nondeterministic, even with fixed random seeds [9, 10]. Moreover, comparing or combining results obtained on different platforms can be misleading, because differences caused by the computational environment may be attributed to the methods being evaluated. 
 
 Data standards are crucial for reproducibility in geospatial workflows. The data formats and software used in a study determine whether data and workflows can be openly reused. Proprietary formats and software-specific workflows may require a paid license, while incomplete format specifications can cause loss or misinterpretation of information when data are converted. Open data formats, such as those of the Open Geospatial Consortium (OGC), and open-source software are, therefore, pillars of reproducibility and, consequently, of open science.
+Open formats, however, evolve rapidly, anc changes between versions may alter the results or break teh code. Furthermore, integrating geospatial workflows with machine learning operations (MLOps) tools for experiment tracking, data versioning and model logging is not straighforward as these tools, in general, are not spatially aware. Usign cloud-native format can hepp bridge the gap. Therefore when tracking experiments, log the spatial metadata (CRS, resolution, tile grid, etc.) explicitly, for example, as parameters or artifacts.
 
 In some cases, models rely on sensitive data that cannot be disclosed, for example, personal or location data subject to privacy regulations, e.g., GDPR, or data covered by licensing agreements [3]. In such cases, describing the data collection process and explaining why the data cannot be shared helps readers understand the limitations of the work. Similarly, intellectual property considerations may restrict reproducibility, for instance, when a patent is involved or when the results provide an institution with a competitive advantage. Even when data or code cannot be shared, reproducibility can be partially supported by reporting metadata, synthetic or aggregated datasets, e.g., through geomasking or spatial aggregation [11], or by providing controlled access on request (if possible).
 
--- standards de facto and MLOPS that are not spatially explicit.
-here
-
 ::: discussion
-Why is reproducibility important?
+Take a momoent to reflect: Why is reproducibility important?
 
 
 ::: hint
-this is my hint
-:::
+Increased trustworthy 
+Increased visibility and citations
 
+:::
+Fair comparison
 :::
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
