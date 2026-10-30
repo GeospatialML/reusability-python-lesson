@@ -26,6 +26,7 @@ In this lesson, you will learn why reusability and reproducibility matter in geo
 We begin by introducing the main phases of data-driven geospatial modelling. Then, we move on to model reusability and reproducibility.
 
 We close by discussing the main challenges of reusability and reproducibility in geospatial modelling.
+
 ### 1.2. Geospatial modelling process - general workflow
 
 Data-driven approaches, meaning that models are built with parameters learned from observations’ data and aim to simulate new data minimally different from the “ground truth” under the same set of descriptive features. Among the standards guiding the implementation of data-driven model applications in general, CRISP-DM (Cross-Industry Standard Process for Data Mining) remains the most widely adopted reference framework. CRISP-DM structures a modelling project into a series of iterative phases including problem and data understanding, data collection and preparation, model selection, model training and hyperparameters optimization, model evalution, deployment and inference. Rather than following a stricly linear approach, CRISP-DM adopts a cyclical one allowing insights and lessons learned in later stages to inform (feedback) and refined decisions made in earlier phases. 
@@ -53,6 +54,7 @@ Validation assesses whether the trained model generalizes beyond the data it was
 5. Model deployment
 
 Model deployment moves a validated model into operational use. This stage requires monitoring for performance drift as new imagery or conditions diverge from the training distribution, along with clear versioning so that predictions can always be traced back to a specific model and dataset version.
+
 ### 1.3. Importance of geospatialModel reusability and reproducibility
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
 As new data/EO mission become available, it is crucial that previously trained models can be reused, either for inference or through fine-tuning. 
@@ -83,11 +85,34 @@ Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-proces
 6. For analysis that include randomness, note underlying random seeds
 Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every relevant step increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
 
+
+:::::::::::::::::::::::::::::::::::::::::: callout
+### Example
+
+The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
+~~~
+from lightning.pytorch import seed_everything
+def set_all_seeds(seed=42):
+    """
+    Set all random seeds for reproducibility
+
+    Parameters:
+    ----------
+    seed : int
+        The seed value
+    """
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    random.seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    seed_everything(seed, workers=True)
+~~~
+{: .language-python}
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 **Example**:
 The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
-
 ~~~
-
 from lightning.pytorch import seed_everything
 def set_all_seeds(seed=42):
     """
@@ -113,7 +138,6 @@ Store figures such as learning curves, confusion matrices, accuracy maps togethe
 Metrics such as *overall accuracy*, F1-score, or intersection over union (IoU) present summarized information. Keep, together with the metrics, the detailed data used to generate them, for example, predicted maps, reference data, and false positive and false negative maps.
 
 9. Connect textual statements to underlying results
-
 Consistent logging of experiments with their corresponding metadata, e.g., model hyperparameters, input features, version, and seeds, facilitates the backtracking of a manuscript's claims to the specific experiment, configuration and output that produced them. Literate-programming approaches such as Jupyter notebooks can further strengthen the link between the narrative, i.e., interpretation or conclusions, and the computational workflow. 
 
 10. Provide public access to scripts, runs and results
