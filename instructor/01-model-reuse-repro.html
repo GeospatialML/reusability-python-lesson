@@ -208,21 +208,12 @@
 <div class="accordion accordion-flush" id="accordionFlushcurrent">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-headingcurrent">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsecurrent" aria-expanded="true" aria-controls="flush-collapsecurrent">
         <span class="visually-hidden">Current Chapter</span>
         <span class="current-chapter">
         1. Modelling and model reusability and reproduciblity
         </span>
-      </button>
+      
     </div><!--/div.accordion-header-->
-
-    <div id="flush-collapsecurrent" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushcurrent">
-      <div class="accordion-body">
-        <ul><li><a href="#figures">Figures</a></li>
-<li><a href="#math">Math</a></li>
-<li><a href="#references">References</a></li>
-        </ul></div><!--/div.accordion-body-->
-    </div><!--/div.accordion-collapse-->
 
   </div><!--/div.accordion-item-->
 </div><!--/div.accordion-flush-->
@@ -335,7 +326,7 @@
       </div>
     </nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Modelling and model reusability and reproduciblity</h1>
-        <p>Last updated on 2026-10-29 |
+        <p>Last updated on 2026-10-30 |
 
         <a href="https://github.com/GeospatialML/reusability-pyhton-lesson/edit/main/episodes/01-model-reuse-repro.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -383,8 +374,10 @@ matter in geospatial modelling.</p>
 modelling. Then, we move on to model reusability and
 reproducibility.</p>
 <p>We close by discussing the main challenges of reusability and
-reproducibility in geospatial modelling. ### 1.2. Geospatial modelling
-process - general workflow</p>
+reproducibility in geospatial modelling.</p>
+</div>
+<div class="section level3">
+<h3 id="geospatial-modelling-process---general-workflow">1.2. Geospatial modelling process - general workflow<a class="anchor" aria-label="anchor" href="#geospatial-modelling-process---general-workflow"></a></h3>
 <p>Data-driven approaches, meaning that models are built with parameters
 learned from observations’ data and aim to simulate new data minimally
 different from the “ground truth” under the same set of descriptive
@@ -441,15 +434,19 @@ alongside spatial error maps.</p>
 stage requires monitoring for performance drift as new imagery or
 conditions diverge from the training distribution, along with clear
 versioning so that predictions can always be traced back to a specific
-model and dataset version. ### 1.3. Importance of geospatialModel
-reusability and reproducibility Training machine learning models require
-a vast amount of data; deep learning models in particular are
-data-hungry so re-using them is crucial. Moreover, fine-tuning deep
-learning models, where you re-used a previously train model, is a common
-practice. Reusing models let scientist can understands what work and
-what does not, and enables fair comparison. As new data/EO mission
-become available, it is crucial that previously trained models can be
-reused, either for inference or through fine-tuning.</p>
+model and dataset version.</p>
+</div>
+<div class="section level3">
+<h3 id="importance-of-geospatialmodel-reusability-and-reproducibility">1.3. Importance of geospatialModel reusability and
+reproducibility<a class="anchor" aria-label="anchor" href="#importance-of-geospatialmodel-reusability-and-reproducibility"></a></h3>
+<p>Training machine learning models require a vast amount of data; deep
+learning models in particular are data-hungry so re-using them is
+crucial. Moreover, fine-tuning deep learning models, where you re-used a
+previously train model, is a common practice. Reusing models let
+scientist can understands what work and what does not, and enables fair
+comparison. As new data/EO mission become available, it is crucial that
+previously trained models can be reused, either for inference or through
+fine-tuning.</p>
 <p>Reproducibility is the ability to reproduce a ML experiment and
 obtain consistent result [2] with a prior study using the same
 materials, procedures, and conditions of analysis [3]. It is essential
@@ -530,25 +527,54 @@ differences may nevertheless occur because of non-deterministic GPU
 operations or differences in hardware and operating systems. To minimise
 such discrepancies, use deterministic operations wherever possible. When
 several runs are conducted, record and report every used seed.</p></li>
-</ol><p><strong>Example</strong>: The following example presents a function
-to set all seeds involved in a DL workflow for reproducibility [7].</p>
-<pre><code>
-from lightning.pytorch import seed_everything
-def set_all_seeds(seed=42):
-    """
-    Set all random seeds for reproducibility
+</ol><div id="example" class="callout">
+<div class="callout-square">
+<i class="callout-icon" data-feather="bell"></i>
+</div>
+<span class="callout-header">Callout</span>
+<div id="example" class="callout-inner">
+<h3 class="callout-title">Example</h3>
+<div class="callout-content">
+<p>The following example presents a function to set all seeds involved
+in a DL workflow for reproducibility [7]. <sub></sub>~ from
+lightning.pytorch import seed_everything def set_all_seeds(seed=42): ““”
+Set all random seeds for reproducibility</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1" aria-label="code-block-1-1"></a><span class="ex">Parameters:</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1" aria-label="code-block-1-2"></a><span class="ex">----------</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1" aria-label="code-block-1-3"></a><span class="ex">seed</span> : int</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1" aria-label="code-block-1-4"></a>    <span class="ex">The</span> seed value</span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1" aria-label="code-block-1-5"></a><span class="st">"""</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1" aria-label="code-block-1-6"></a><span class="st">np.random.seed(seed)</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1" aria-label="code-block-1-7"></a><span class="st">torch.manual_seed(seed)</span></span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1" aria-label="code-block-1-8"></a><span class="st">random.seed(seed)</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1" aria-label="code-block-1-9"></a><span class="st">torch.cuda.manual_seed_all(seed)</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1" aria-label="code-block-1-10"></a><span class="st">seed_everything(seed, workers=True)</span></span></code></pre>
+</div>
+<pre><code>{: .language-python}
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-    Parameters:
-    ----------
-    seed : int
-        The seed value
-    """
-    np.random.seed(seed)
-    torch.manual_seed(seed)
-    random.seed(seed)
-    torch.cuda.manual_seed_all(seed)
-    seed_everything(seed, workers=True)</code></pre>
-<p>{: .language-python}</p>
+**Example**:
+The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].</code></pre>
+<p>from lightning.pytorch import seed_everything def
+set_all_seeds(seed=42): ““” Set all random seeds for reproducibility</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">SH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode sh" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="ex">Parameters:</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="ex">----------</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a><span class="ex">seed</span> : int</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a>    <span class="ex">The</span> seed value</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1" aria-label="code-block-3-5"></a><span class="st">"""</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1" aria-label="code-block-3-6"></a><span class="st">np.random.seed(seed)</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1" aria-label="code-block-3-7"></a><span class="st">torch.manual_seed(seed)</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1" aria-label="code-block-3-8"></a><span class="st">random.seed(seed)</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1" aria-label="code-block-3-9"></a><span class="st">torch.cuda.manual_seed_all(seed)</span></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1" aria-label="code-block-3-10"></a><span class="st">seed_everything(seed, workers=True)</span></span></code></pre>
+</div>
+<p><sub></sub>~ {: .language-python}</p>
 <ol start="7" style="list-style-type: decimal"><li><p>Always store raw data behind plots Store figures such as learning
 curves, confusion matrices, accuracy maps together with the underline
 data. Keeping the underline data allows to recreate figures without
@@ -561,15 +587,15 @@ accuracy</em>, F1-score, or intersection over union (IoU) present
 summarized information. Keep, together with the metrics, the detailed
 data used to generate them, for example, predicted maps, reference data,
 and false positive and false negative maps.</p></li>
-<li><p>Connect textual statements to underlying results</p></li>
-</ol><p>Consistent logging of experiments with their corresponding metadata,
-e.g., model hyperparameters, input features, version, and seeds,
-facilitates the backtracking of a manuscript’s claims to the specific
-experiment, configuration and output that produced them.
-Literate-programming approaches such as Jupyter notebooks can further
-strengthen the link between the narrative, i.e., interpretation or
-conclusions, and the computational workflow.</p>
-<ol start="10" style="list-style-type: decimal"><li>Provide public access to scripts, runs and results The
+<li><p>Connect textual statements to underlying results Consistent
+logging of experiments with their corresponding metadata, e.g., model
+hyperparameters, input features, version, and seeds, facilitates the
+backtracking of a manuscript’s claims to the specific experiment,
+configuration and output that produced them. Literate-programming
+approaches such as Jupyter notebooks can further strengthen the link
+between the narrative, i.e., interpretation or conclusions, and the
+computational workflow.</p></li>
+<li><p>Provide public access to scripts, runs and results The
 reproducibility of geospatial studies might be hindered by data
 licensing constraints and privacy concerns. In such cases, provide
 derived products and sufficiently anonymized results together with
@@ -580,10 +606,8 @@ publicly available repositories such as Zenodo or 4TU.ResearchData that
 assign a digital object identifier (DOI). Ideally the code can be
 inspected for reproducibility. For example, open science initiatives
 like CODECHECK offer a space to get an artcle’s code verified for
-reproducibility[8]</li>
-</ol></div>
-</div>
-<div class="section level3">
+reproducibility[8]</p></li>
+</ol><div class="section level3">
 <h3 id="pre-trained-models">1.4. Pre-trained models<a class="anchor" aria-label="anchor" href="#pre-trained-models"></a></h3>
 <p>Geospatial modelling workflows using DL often use pre-trained models,
 i.e., weights of a previously trained model, because they accelerate the
@@ -655,7 +679,7 @@ here</p>
 <button class="accordion-button hint-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHint1" aria-expanded="false" aria-controls="collapseHint1">
   <h4 class="accordion-header" id="headingHint1"> Give me a hint </h4>
 </button>
-<div id="collapseHint1" class="accordion-collapse collapse" data-bs-parent="#accordionHint1" aria-labelledby="headingHint1">
+<div id="collapseHint1" class="accordion-collapse collapse" aria-labelledby="headingHint1" data-bs-parent="#accordionHint1">
 <div class="accordion-body">
 <p>this is my hint</p>
 </div>
@@ -670,7 +694,7 @@ here</p>
 <button class="accordion-button instructor-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstructor1" aria-expanded="false" aria-controls="collapseInstructor1">
   <h3 class="accordion-header" id="headingInstructor1">  <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="edit-2"></i></div> Instructor Note </h3>
 </button>
-<div id="collapseInstructor1" class="accordion-collapse collapse" data-bs-parent="#accordionInstructor1" aria-labelledby="headingInstructor1">
+<div id="collapseInstructor1" class="accordion-collapse collapse" aria-labelledby="headingInstructor1" data-bs-parent="#accordionInstructor1">
 <div class="accordion-body">
 <p>Inline instructor notes can help inform instructors of timing
 challenges associated with the lessons. They appear in the “Instructor
@@ -688,7 +712,7 @@ View”</p>
 <h3 class="callout-title">Challenge 1: Can you do it?</h3>
 <div class="callout-content">
 <p>What is the output of this command?</p>
-<div class="codewrapper sourceCode" id="cb2">
+<div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">R<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="downlit sourceCode r">
@@ -702,7 +726,7 @@ View”</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Output </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -731,7 +755,7 @@ challenge blocks?</h3>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>You can add a line with at least three colons and a
 <code>solution</code> tag.</p>
@@ -740,8 +764,9 @@ challenge blocks?</h3>
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>
-<hr class="half-width"><p>You can use standard markdown for static figures with the following
+<div class="section level2">
+<h2 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a></h2>
+<p>You can use standard markdown for static figures with the following
 syntax:</p>
 <p><code>![optional caption that appears below the figure](figure url){alt='alt text for accessibility purposes'}</code></p>
 <figure><img src="https://raw.githubusercontent.com/carpentries/logo/master/Badge_Carpentries.svg" alt="Blue Carpentries hex person logo with no text." class="figure mx-auto d-block"><div class="figcaption">You belong in The Carpentries!</div>
@@ -760,8 +785,10 @@ to a commonly-asked question.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="math">Math<a class="anchor" aria-label="anchor" href="#math"></a></h2>
-<hr class="half-width"><p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
+</div>
+<div class="section level2">
+<h2 id="math">Math<a class="anchor" aria-label="anchor" href="#math"></a></h2>
+<p>One of our episodes contains <span class="math inline">\(\LaTeX\)</span> equations when describing how to
 create dynamic reports with {knitr}, so we now use mathjax to describe
 this:</p>
 <p><code>$\alpha = \dfrac{1}{(1 - \beta)^2}$</code> becomes: <span class="math inline">\(\alpha = \dfrac{1}{(1 - \beta)^2}\)</span></p>
@@ -784,8 +811,10 @@ locally</li>
 </ul></div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-<hr class="half-width"><p>[1] Koldasbayeva, D., Tregubova, P., Gasanov, M. et al. Challenges in
+</div>
+<div class="section level2">
+<h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+<p>[1] Koldasbayeva, D., Tregubova, P., Gasanov, M. et al. Challenges in
 data-driven geospatial modeling for environmental research and practice.
 Nat Commun 15, 10700 (2024). <a href="https://doi.org/10.1038/s41467-024-55240-8" class="external-link uri">https://doi.org/10.1038/s41467-024-55240-8</a></p>
 <p>[2] D. Kreuzberger, N. Kühl and S. Hirschl, “Machine Learning
@@ -823,7 +852,16 @@ maps. Journal of Empirical Research on Human Research Ethics, 9(4),
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use.
  -->
-</section></div> <!-- / div.lesson-content -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+      </div> <!-- / div.lesson-content -->
     </main><!-- / main#main-content.main-content --><nav class="bottom-pagination mx-md-4" aria-label="Previous and Next Chapter Bottom"><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link" href="../instructor/index.html"><i aria-hidden="true" class="small-arrow" data-feather="arrow-left"></i>Previous</a>
         <a class="chapter-link float-end" href="../instructor/02-intro-mlops.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
@@ -883,8 +921,8 @@ any links that you are not going to use.
   "url": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/01-model-reuse-repro.html",
   "identifier": "https://GeospatialML.github.io/reusability-pyhton-lesson/instructor/01-model-reuse-repro.html",
   "dateCreated": "2026-05-28",
-  "dateModified": "2026-10-29",
-  "datePublished": "2026-10-29"
+  "dateModified": "2026-10-30",
+  "datePublished": "2026-10-30"
 }
 
   </script><script>
