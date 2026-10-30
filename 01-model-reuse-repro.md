@@ -278,27 +278,27 @@ Cool, right?
 
 ## References
 
-[1] Koldasbayeva, D., Tregubova, P., Gasanov, M. et al. Challenges in data-driven geospatial modeling for environmental research and practice. Nat Commun 15, 10700 (2024). https://doi.org/10.1038/s41467-024-55240-8
+[1] Koldasbayeva, D., Tregubova, P., Gasanov, M. et al. Challenges in data-driven geospatial modeling for environmental research and practice. Nat Commun 15, 10700 (2024). [https://doi.org/10.1038/s41467-024-55240-8](https://doi.org/10.1038/s41467-024-55240-8)
 
-[2] D. Kreuzberger, N. Kühl and S. Hirschl, "Machine Learning Operations (MLOps): Overview, Definition, and Architecture," in IEEE Access, vol. 11, pp. 31866-31879, 2023, doi: 10.1109/ACCESS.2023.3262138. keywords: {Interviews;Machine learning;Training;Collaboration;Bibliographies;Automation;Codes;CI/CD;DevOps;machine learning;MLOps;operations;workflow orchestration},
+[2] D. Kreuzberger, N. Kühl and S. Hirschl, "Machine Learning Operations (MLOps): Overview, Definition, and Architecture," in IEEE Access, vol. 11, pp. 31866-31879, 2023, doi: 10.1109/ACCESS.2023.3262138.
+
 
 [3] Kedron P.,  Li W., Stewart Fotheringham & Michael Goodchild
 (2020): Reproducibility and replicability: opportunities and challenges for geospatial research,
-International Journal of Geographical Information Science, DOI: 10.1080/13658816.2020.1802032
+International Journal of Geographical Information Science, doi: 10.1080/13658816.2020.1802032
 
-[4] Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLOS Computational Biology 9(10): e1003285. https://doi.org/10.1371/journal.pcbi.1003285
+[4] Sandve GK, Nekrutenko A, Taylor J, Hovig E (2013) Ten Simple Rules for Reproducible Computational Research. PLOS Computational Biology 9(10): e1003285. [https://doi.org/10.1371/journal.pcbi.1003285](https://doi.org/10.1371/journal.pcbi.1003285)
 
-[5] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. https://doi.org/10.1080/13658816.2018.1508687
+[5] Konkol, M., Kray, C., & Pfeiffer, M. (2019). Computational reproducibility in geoscientific papers: Insights from a series of studies with geoscientists and a reproduction study. International Journal of Geographical Information Science, 33(2), 408–429. [https://doi.org/10.1080/13658816.2018.1508687](https://doi.org/10.1080/13658816.2018.1508687)
 
 [6] [YAML](https://www.ibm.com/think/topics/yaml)
 
 [7] [Public Urban Green Spaces (PUGS) Detection Workflow](https://github.com/rosaguilar/pugs-detection/blob/main/pugs_detection/utils.py)
-[r-markdown]: https://rmarkdown.rstudio.com/
 
 [8] Eglen S, Nüst D. CODECHECK: an open-science initiative to facilitate sharing of computer programs and results presented in scientific publications. Septentrio Conf Series. 2019;1. [(https://doi.org/10.7557/5.4910](https://doi.org/10.7557/5.4910).
 
 [9][PyTorch reproducibility](https://docs.pytorch.org/docs/2.15/notes/randomness.html)
 
-[10] Gundersen, O. E., Coakley, K., Kirkpatrick, C., & Gil, Y. (2023). Sources of irreproducibility in machine learning: A review. arXiv:2204.07610
+[10] Gundersen, O. E., Coakley, K., Kirkpatrick, C., & Gil, Y. (2023). Sources of irreproducibility in machine learning: A review. arXiv:2204.07610.
 
 [11] Kounadi, O., & Leitner, M. (2014). Why does geoprivacy matter? The scientific publication of confidential data presented on maps. Journal of Empirical Research on Human Research Ethics, 9(4), 34–45.
