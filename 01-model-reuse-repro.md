@@ -110,6 +110,7 @@ def set_all_seeds(seed=42):
     torch.cuda.manual_seed_all(seed)
     seed_everything(seed, workers=True)
 ~~~
+
 {: .language-python}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
