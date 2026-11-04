@@ -92,6 +92,7 @@ Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-v
 ### Example
 
 The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
+
 ~~~
 from lightning.pytorch import seed_everything
 def set_all_seeds(seed=42):
