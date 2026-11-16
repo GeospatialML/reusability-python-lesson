@@ -161,41 +161,43 @@ associated with the lessons. They appear in the "Instructor View"
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-::::::::::::::::::::::::::::::::::::: challenge 
+::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 1: Why is reprodicibility important?
+## Challenge 1: Why is reproducibility important?
 
 Mention something
 
 ::: hint
-Increased trustworthy, visibility and citations
+
+Increased trustworthiness, visibility and citations
+
 :::
 
-:::::::::::::::::::::::: solution 
+:::::::::::::::::::::::: solution
 
 ## Output
- 
+
 ```output
 [1] "The reproducibility is necessary but often neglected"
 ```
 
 :::::::::::::::::::::::::::::::::
 
-here another  
+:::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: challenge 
+::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 1: Why is reproducibility important in geospatial research?
+## Challenge 2: Why is reproducibility important in geospatial research?
 
-:::::::::::::::::::::::: solution 
+:::::::::::::::::::::::: solution
 
 Scientific rigour
 
-
 :::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::: keypoints 
+::::::::::::::::::::::::::::::::::::: keypoints
 
 - Scientific rigour and fair comparison are common drivers/motivation for reproducibility
 - Reproducibility can be implemented in every stage of the geospatial modelling process
