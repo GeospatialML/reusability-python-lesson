@@ -163,22 +163,17 @@ associated with the lessons. They appear in the "Instructor View"
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 1: Why is reproducibility important?
+## Challenge 1: Why is reproducibility important in geospatial research?
 
-Mention something
+Think of at least two reasons to put effort on reproducibility
 
-::: hint
-
-Increased trustworthiness, visibility and citations
-
-:::
 
 :::::::::::::::::::::::: solution
 
 ## Output
 
 ```output
-[1] "The reproducibility is necessary but often neglected"
+"Reproducibility is important for Scientific rigour and fair comparison, also open science"
 ```
 
 :::::::::::::::::::::::::::::::::
@@ -187,11 +182,17 @@ Increased trustworthiness, visibility and citations
 
 ::::::::::::::::::::::::::::::::::::: challenge
 
-## Challenge 2: Why is reproducibility important in geospatial research?
+## Challenge 2: What are author benefits concerning reproducibility of their work?
+
+::: hint
+
+Visibility and citations
+
+:::
 
 :::::::::::::::::::::::: solution
 
-Scientific rigour
+Increased trustworthiness, visibility and citations
 
 :::::::::::::::::::::::::::::::::
 
