@@ -147,13 +147,11 @@ Open formats, however, evolve rapidly, anc changes between versions may alter th
 In some cases, models rely on sensitive data that cannot be disclosed, for example, personal or location data subject to privacy regulations, e.g., GDPR, or data covered by licensing agreements [3]. In such cases, describing the data collection process and explaining why the data cannot be shared helps readers understand the limitations of the work. Similarly, intellectual property considerations may restrict reproducibility, for instance, when a patent is involved or when the results provide an institution with a competitive advantage. Even when data or code cannot be shared, reproducibility can be partially supported by reporting metadata, synthetic or aggregated datasets, e.g., through geomasking or spatial aggregation [11], or by providing controlled access on request (if possible).
 
 ::: discussion
+
 Take a moment to reflect: What is (for authors) the benefits of reproducibility?
 
-
-::: hint
-Increased trustworthy, visibility and citations
-
 :::
+
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: instructor
 
@@ -168,6 +166,10 @@ associated with the lessons. They appear in the "Instructor View"
 ## Challenge 1: Why is reprodicibility important?
 
 Mention something
+
+::: hint
+Increased trustworthy, visibility and citations
+:::
 
 :::::::::::::::::::::::: solution 
 
