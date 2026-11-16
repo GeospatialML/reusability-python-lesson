@@ -19,7 +19,7 @@ exercises: 0 # exercise time in minutes
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
-### 1.1. Introduction
+## 1.1. Introduction
 
 In this lesson, you will learn why reusability and reproducibility matter in geospatial modelling.
 
@@ -27,7 +27,7 @@ We begin by introducing the main phases of data-driven geospatial modelling. The
 
 We close by discussing the main challenges of reusability and reproducibility in geospatial modelling.
 
-### 1.2. Geospatial modelling process - general workflow
+## 1.2. Geospatial modelling process - general workflow
 
 Data-driven approaches, meaning that models are built with parameters learned from observations’ data and aim to simulate new data minimally different from the “ground truth” under the same set of descriptive features. Among the standards guiding the implementation of data-driven model applications in general, CRISP-DM (Cross-Industry Standard Process for Data Mining) remains the most widely adopted reference framework. CRISP-DM structures a modelling project into a series of iterative phases including problem and data understanding, data collection and preparation, model selection, model training and hyperparameters optimization, model evalution, deployment and inference. Rather than following a stricly linear approach, CRISP-DM adopts a cyclical one allowing insights and lessons learned in later stages to inform (feedback) and refined decisions made in earlier phases. 
 
@@ -55,7 +55,7 @@ Validation assesses whether the trained model generalizes beyond the data it was
 
 Model deployment moves a validated model into operational use. This stage requires monitoring for performance drift as new imagery or conditions diverge from the training distribution, along with clear versioning so that predictions can always be traced back to a specific model and dataset version.
 
-### 1.3. Importance of geospatialModel reusability and reproducibility
+## 1.3. Importance of geospatialModel reusability and reproducibility
 Training machine learning models require a vast amount of data; deep learning models in particular are data-hungry so re-using them is crucial. Moreover, fine-tuning deep learning models, where you re-used a previously train model, is a common practice. Reusing models let scientist can understands what work and what does not, and enables fair comparison. 
 As new data/EO mission become available, it is crucial that previously trained models can be reused, either for inference or through fine-tuning. 
 
@@ -65,7 +65,7 @@ A minimum level of reproducibility is reached when you, as the author, can repro
 
 Several recommendations exist for addressing reproducibility in geospatial research [5]. Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
-#### Simple rules for reproducible computational research
+### Simple rules for reproducible computational research
 Several recommendations exist for addressing reproducibility in geospatial research [5] Below, we present ten well-known rules for reproducible computational research [3], which have been contextualized to geospatial modelling workflows. These rules aim to facilitate the reproducibility of research outputs, including data, models and derived artifacts such as performance metrics and figures.
 
 1. For every result, keep track of how it was produced
@@ -86,12 +86,11 @@ Geospatial ML/DL pipelines often produce intermediate products, e.g., pre-proces
 
 6. For analysis that include randomness, note underlying random seeds
 Randomness influence ML/DL workflows in many steps, e.g., data spliting, cross-validation, weight initialisation, data augmentation, random sampling and training patches. Recording the random seeds used by all relevant libraries (e.g., NumPy, scikit-learn, PyTorch) in every relevant step increases the reproducibility of a workflow. Minor differences may nevertheless occur because of non-deterministic GPU operations or differences in hardware and operating systems. To minimise such discrepancies, use deterministic operations wherever possible. When several runs are conducted, record and report every used seed.
-
+The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
 
 :::::::::::::::::::::::::::::::::::::::::: callout
-### Example
 
-The following example presents a function to set all seeds involved in a DL workflow for reproducibility [7].
+**Example**
 
 ~~~
 from lightning.pytorch import seed_everything
@@ -111,8 +110,6 @@ def set_all_seeds(seed=42):
     seed_everything(seed, workers=True)
 ~~~
 
-{: .language-python}
-
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 7. Always store raw data behind plots
@@ -128,7 +125,7 @@ Consistent logging of experiments with their corresponding metadata, e.g., model
 The reproducibility of geospatial studies might be hindered by data licensing constraints and privacy concerns. In such cases, provide derived products and sufficiently anonymized results together with precisely documented steps (e.g., scripts) for data gathering and pre-processing. Ideally, in addition to using platforms such as Github, archive the code, configuration files, model weights, and outputs in publicly available repositories such as Zenodo or 4TU.ResearchData that assign a digital object identifier (DOI). 
 Ideally the code can be inspected for reproducibility. For example, open science initiatives like CODECHECK offer a space to get an artcle's code verified for reproducibility[8]
 
-### 1.4. Pre-trained models
+## 1.4. Pre-trained models
 
 Geospatial modelling workflows using DL often use pre-trained models, i.e., weights of a previously trained model, because they accelerate the training process and can yield better performance while helping to overcome potential data scarcity constraints. To reproduce a workflow using pre-trained models, it is necessary to provide a link to the models' metadata and their corresponding weights. Metadata often describe model version, expected input data, tile size, features, and the number and order of channels, for example, how many Sentinel-2 bands are used, in which order, and at which resolution. 
 
@@ -140,9 +137,9 @@ Foundational models are large-scale and highly versatile AI models that are pre-
 
 **Geospatial foundational models** are a specialized class of are foundation models pretrained on heterogeneous spatiotemporal data, often from different missions or modalities, to support diverse downstream geospatial tasks. They can be used for various downstream tasks either directly, through zero-shot inference, or after task-specific fine-tuning.
 
-### 1.5. Challenges of reusability and reproducibility in geospatial modelling
+## 1.5. Challenges of reusability and reproducibility in geospatial modelling
 
-Deep learning results can vary across hardware, software versions, and precision settings because some GPU operations are nondeterministic, even with fixed random seeds [9, 10]. Moreover, comparing or combining results obtained on different platforms can be misleading, because differences caused by the computational environment may be attributed to the methods being evaluated. 
+Deep learning results can vary across hardware, software versions, and precision settings because some GPU operations are non deterministic, even with fixed random seeds [9, 10]. Moreover, comparing or combining results obtained on different platforms can be misleading, because differences caused by the computational environment may be attributed to the methods being evaluated. 
 
 Data standards are crucial for reproducibility in geospatial workflows. The data formats and software used in a study determine whether data and workflows can be openly reused. Proprietary formats and software-specific workflows may require a paid license, while incomplete format specifications can cause loss or misinterpretation of information when data are converted. Open data formats, such as those of the Open Geospatial Consortium (OGC), and open-source software are, therefore, pillars of reproducibility and, consequently, of open science.
 Open formats, however, evolve rapidly, anc changes between versions may alter the results or break teh code. Furthermore, integrating geospatial workflows with machine learning operations (MLOps) tools for experiment tracking, data versioning and model logging is not straighforward as these tools, in general, are not spatially aware. Usign cloud-native format can hepp bridge the gap. Therefore when tracking experiments, log the spatial metadata (CRS, resolution, tile grid, etc.) explicitly, for example, as parameters or artifacts.
@@ -150,14 +147,13 @@ Open formats, however, evolve rapidly, anc changes between versions may alter th
 In some cases, models rely on sensitive data that cannot be disclosed, for example, personal or location data subject to privacy regulations, e.g., GDPR, or data covered by licensing agreements [3]. In such cases, describing the data collection process and explaining why the data cannot be shared helps readers understand the limitations of the work. Similarly, intellectual property considerations may restrict reproducibility, for instance, when a patent is involved or when the results provide an institution with a competitive advantage. Even when data or code cannot be shared, reproducibility can be partially supported by reporting metadata, synthetic or aggregated datasets, e.g., through geomasking or spatial aggregation [11], or by providing controlled access on request (if possible).
 
 ::: discussion
-Take a momoent to reflect: Why is reproducibility important?
+Take a moment to reflect: What is (for authors) the benefits of reproducibility?
 
 
 ::: hint
-Increased trustworthy 
-Increased visibility and citations
+Increased trustworthy, visibility and citations
 
-:::
+::: hint
 Fair comparison
 :::
 
@@ -168,11 +164,11 @@ associated with the lessons. They appear in the "Instructor View"
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
 ::::::::::::::::::::::::::::::::::::: challenge 
 
-## Challenge 1: Can you do it?
+## Challenge 1: Why is reprodicibility important?
 
-What is the output of this command?
 
 ```r
 paste("This", "new", "lesson", "looks", "good")
@@ -183,20 +179,25 @@ paste("This", "new", "lesson", "looks", "good")
 ## Output
  
 ```output
-[1] "This new lesson looks good"
+[1] "The reproducibility is necessary but often neglected"
 ```
 
 :::::::::::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::: challenge 
 
-## Challenge 2: how do you nest solutions within challenge blocks?
+## Challenge 1: Why is reproducibility important in geospatial research?
 
 :::::::::::::::::::::::: solution 
 
-You can add a line with at least three colons and a `solution` tag.
+Scientific rigour
+
 
 :::::::::::::::::::::::::::::::::
+
+
 ::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 ## Figures
 
@@ -230,10 +231,11 @@ Cool, right?
 
 ::::::::::::::::::::::::::::::::::::: keypoints 
 
-- Use `.md` files for episodes when you want static content
-- Use `.Rmd` files for episodes when you need to generate output
-- Run `sandpaper::check_lesson()` to identify any issues with your lesson
-- Run `sandpaper::build_lesson()` to preview your lesson locally
+- Scientific rigour and fair comparison are common drivers/motivation for reproducibility
+- Reproducibility can be implemented in every stage of the geospatial modelling process
+- Data privacy and License constraints are reproducibility blockers.  
+- Data standards and open source software are pillars for reproducibility
+- Metadata is crucial for the correct use of pre-trained models
 
 ::::::::::::::::::::::::::::::::::::::::::::::::
 
